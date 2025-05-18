@@ -11,9 +11,13 @@ using pruebas_club_deportivo;
 
 namespace MenuPrincipalClub
 {
-    public partial class Form2 : Form
+    public partial class frmPrincipal : Form
     {
-        public Form2()
+
+        internal string? rol;
+        internal string? usuario;
+
+        public frmPrincipal()
         {
             InitializeComponent();
         }
@@ -35,7 +39,7 @@ namespace MenuPrincipalClub
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Conecto conecto = new Conecto("Server=localhost;Database=club_deportivo;User ID=root;Password=root;SslMode=none;");
+            Conecto conecto = new Conecto("Server=localhost;Database=club_deportivo;User ID=root;Password=root;SslMode=Required;AllowPublicKeyRetrieval=False");
             ServicioUsuario servicioUsuario = new ServicioUsuario(conecto);
 
 

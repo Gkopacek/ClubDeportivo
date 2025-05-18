@@ -14,11 +14,11 @@ namespace MenuPrincipalClub.Datos
 
         private Conexion()
         {
-            this.nombreDB = "clubdeportivo_lossuperamigos";
+            this.nombreDB = "Club_Deportivo";
             this.svDB = "127.0.0.1";
             this.puertoDB = "3306";
             this.usuario = "root";
-            this.contrasenia = "";
+            this.contrasenia = "root";
         }
 
         public MySqlConnection CrearConexion()

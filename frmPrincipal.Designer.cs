@@ -2,7 +2,7 @@
 
    
 {
-    partial class Form2
+    partial class frmPrincipal
     {
         /// <summary>
         /// Required designer variable.

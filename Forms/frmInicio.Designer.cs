@@ -33,8 +33,8 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            txtUsuario = new TextBox();
+            txtPass = new TextBox();
             SuspendLayout();
             // 
             // button1
@@ -45,7 +45,7 @@
             button1.TabIndex = 0;
             button1.Text = "Ingresar";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button1.Click += btnIngresar_Click;
             // 
             // button2
             // 
@@ -86,27 +86,27 @@
             label3.Text = "Contraseña";
             label3.Click += label3_Click;
             // 
-            // textBox1
+            // txtUsuario
             // 
-            textBox1.Location = new Point(249, 109);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(286, 23);
-            textBox1.TabIndex = 5;
+            txtUsuario.Location = new Point(249, 109);
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.Size = new Size(286, 23);
+            txtUsuario.TabIndex = 5;
             // 
-            // textBox2
+            // txtPass
             // 
-            textBox2.Location = new Point(249, 163);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(286, 23);
-            textBox2.TabIndex = 6;
+            txtPass.Location = new Point(249, 163);
+            txtPass.Name = "txtPass";
+            txtPass.Size = new Size(286, 23);
+            txtPass.TabIndex = 6;
             // 
             // frmInicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txtPass);
+            Controls.Add(txtUsuario);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -125,7 +125,7 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txtUsuario;
+        private TextBox txtPass;
     }
 }

@@ -1,3 +1,5 @@
+using System.Data;
+
 namespace MenuPrincipalClub
 {
     public partial class frmInicio : Form
@@ -5,10 +7,10 @@ namespace MenuPrincipalClub
         public frmInicio()
         {
             InitializeComponent();
-            textBox2.UseSystemPasswordChar = true;
+            txtPass.UseSystemPasswordChar = true;
 
 
-            
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -23,13 +25,37 @@ namespace MenuPrincipalClub
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
-            textBox2.Text = "";
+            txtUsuario.Text = "";
+            txtPass.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string ingresoUsuario = textBox1.Text;
+            DataTable tablaLogin = new DataTable();
+            Datos.Usuarios dato = new Datos.Usuarios();
+
+
+            tablaLogin = dato.LogInUsuario(txtUsuario.Text, txtPass.Text);
+
+            if (tablaLogin.Rows.Count > 0)
+            {
+                MessageBox.Show("Ingreso exitoso", "MENSAJES DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                frmPrincipal Principal = new frmPrincipal();
+
+                Principal.rol = Convert.ToString(tablaLogin.Rows[0][0]);
+                Principal.usuario = Convert.ToString(txtUsuario.Text);
+
+                Principal.Show(); // se llama al formulario principal
+                this.Hide(); // se oculta el formulario del login
+
+            }
+            else
+            {
+                MessageBox.Show("Usuario y/o password incorrectos");
+            }
+
+
+            /*  string ingresoUsuario = textBox1.Text;
             string ingresoPassword = textBox2.Text;
 
 
@@ -44,6 +70,37 @@ namespace MenuPrincipalClub
             else
             {
                 MessageBox.Show("Usuario o contraseña incorrectos");
+            }
+
+            */
+        }
+
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            {
+                DataTable tablaLogin = new DataTable();
+                Datos.Usuarios dato = new Datos.Usuarios();
+
+
+                tablaLogin = dato.LogInUsuario(txtUsuario.Text, txtPass.Text);
+
+                if (tablaLogin.Rows.Count > 0)
+                {
+                    MessageBox.Show("Ingreso exitoso", "MENSAJES DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmPrincipal Principal = new frmPrincipal();
+
+                    Principal.rol = Convert.ToString(tablaLogin.Rows[0][0]);
+                    Principal.usuario = Convert.ToString(txtUsuario.Text);
+
+                    Principal.Show(); // se llama al formulario principal
+                    this.Hide(); // se oculta el formulario del login
+
+                }
+                else
+                {
+                    MessageBox.Show("Usuario y/o password incorrectos");
+                }
+
             }
         }
     }
