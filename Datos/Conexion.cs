@@ -7,12 +7,12 @@ using MySql.Data.MySqlClient;
 
 namespace MenuPrincipalClub.Datos
 {
-    internal class Conexion
+    public class Conexion
     {
         private String nombreDB, svDB, puertoDB, usuario, contrasenia;
         private static Conexion? con = null;
 
-        private Conexion()
+        public Conexion()
         {
             this.nombreDB = "Club_Deportivo";
             this.svDB = "127.0.0.1";
@@ -50,6 +50,13 @@ namespace MenuPrincipalClub.Datos
             return con;
         }
 
+        public Conexion GetConexion()
+        {
+            return this;
+        }
+
     }
+
+    
 }
 
