@@ -47,7 +47,7 @@ namespace MenuPrincipalClub
 
 
             // Obtener la lista de usuarios
-            List<E_Cliente> usuarios = ServicioCliente.ObtenerUsuarios();
+            var usuarios = ServicioCliente.ObtenerUsuarios();
             // Verificar si la lista de usuarios no es nula
             if (usuarios != null)
             {

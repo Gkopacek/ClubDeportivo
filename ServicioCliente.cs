@@ -11,43 +11,49 @@ namespace pruebas_club_deportivo
     
 
 public class ServicioCliente
+{
+        
+        
+
+    // Primer servio obtener todos los usuarios
+    public List<E_Cliente> ObtenerUsuarios() 
     {
-        
-        
-
-        // Primer servio obtener todos los usuarios
-        public List<E_Cliente> ObtenerUsuarios() 
+        var listaUsuarios = new List<E_Cliente>();
+        MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
+        MySqlCommand comando = new MySqlCommand("ObtenerSocios", sqlCon);
         {
-            var listaUsuarios = new List<E_Cliente>();
-            MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
-            MySqlCommand comando = new MySqlCommand("ObtenerSocios", sqlCon);
+            comando.CommandType = CommandType.StoredProcedure;
+            sqlCon.Open();
+            using (var cliente = comando.ExecuteReader())
             {
-                comando.CommandType = CommandType.StoredProcedure;
-                sqlCon.Open();
-                using (var cliente = comando.ExecuteReader())
-                {
-                    E_Cliente clienteNuevo;
-                    while (cliente.Read())
-                    {   
-                         clienteNuevo = new E_Cliente(
+                E_Cliente clienteNuevo;
+                while (cliente.Read())
+                {   
+                    string nombreCompleto = cliente.GetString(1);
+                    int espacio = nombreCompleto.IndexOf(' ');
+
+                    string nombre = espacio > 0 ? nombreCompleto.Substring(0, espacio) : nombreCompleto;
+                    string apellido = espacio > 0 ? nombreCompleto.Substring(espacio + 1) : "";
+
+                    clienteNuevo = new E_Cliente(
                             
-                            cliente.GetString(1),
-                            "asd",                        
-                            //Estado = (Estado)Enum.Parse(typeof(Estado), lector.GetString(4), ignoreCase: true)
-                            cliente.GetString(2),
-                            true
+                        nombre,
+                        apellido,                        
+                        //Estado = (Estado)Enum.Parse(typeof(Estado), lector.GetString(4), ignoreCase: true)
+                        cliente.GetString(2),
+                        cliente.GetString(4)
 
-                        );
-                        listaUsuarios.Add(clienteNuevo);
-
-                        clienteNuevo.idCliente = cliente.GetInt32(0);
-                    }
-                    
+                    );
+                    clienteNuevo.idCliente = cliente.GetInt32(0);
+                    listaUsuarios.Add(clienteNuevo);
+                        
                 }
+                    
             }
-
-            return listaUsuarios; 
         }
+
+        return listaUsuarios; 
     }
+}
 
 }

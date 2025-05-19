@@ -12,7 +12,7 @@ namespace MenuPrincipalClub.Entidades
         public bool TieneCarnet { get; set; }
 
         // Constructor de la subclase Socio
-        public E_Socio(string nombre, string apellido, string telefono, string numeroDocumento, bool activo, bool tieneCarnet)
+        public E_Socio(string nombre, string apellido, string telefono, string numeroDocumento, string activo, bool tieneCarnet)
             : base(nombre, apellido, numeroDocumento, activo) // Llamada al constructor de Cliente
         {
             TieneCarnet = tieneCarnet;

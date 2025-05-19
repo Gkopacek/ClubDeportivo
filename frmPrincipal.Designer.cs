@@ -65,7 +65,7 @@
             dataGridView1.TabIndex = 2;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // Form2
+            // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -73,7 +73,7 @@
             Controls.Add(dataGridView1);
             Controls.Add(label1);
             Controls.Add(button1);
-            Name = "Form2";
+            Name = "frmPrincipal";
             Text = "Form2";
             Load += Form2_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -86,5 +86,6 @@
         private Button button1;
         private Label label1;
         private DataGridView dataGridView1;
+
     }
 }
