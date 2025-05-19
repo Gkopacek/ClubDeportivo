@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MenuPrincipalClub.Datos;
+using MenuPrincipalClub.Entidades;
 using pruebas_club_deportivo;
 
 namespace MenuPrincipalClub
@@ -41,12 +42,12 @@ namespace MenuPrincipalClub
         private void button1_Click(object sender, EventArgs e)
         {
             // Conexion conexion = Conexion.getInstancia();
-            // Conecto conecto = new Conecto("Server=localhost;Database=club_deportivo;User ID=root;Password=root;SslMode=Required;AllowPublicKeyRetrieval=False");
+             //Conecto conecto = new Conecto("Server=localhost;Database=club_deportivo;User ID=root;Password=admin;SslMode=Required;AllowPublicKeyRetrieval=False");
             ServicioCliente ServicioCliente = new ServicioCliente();
 
 
             // Obtener la lista de usuarios
-            List<Usuario> usuarios = ServicioCliente.ObtenerUsuarios();
+            List<E_Cliente> usuarios = ServicioCliente.ObtenerUsuarios();
             // Verificar si la lista de usuarios no es nula
             if (usuarios != null)
             {

@@ -13,9 +13,10 @@ namespace MenuPrincipalClub.Entidades
 
         // Constructor de la subclase Socio
         public E_Socio(string nombre, string apellido, string telefono, string numeroDocumento, bool activo, bool tieneCarnet)
-            : base(nombre, apellido, telefono, numeroDocumento, activo) // Llamada al constructor de Cliente
+            : base(nombre, apellido, numeroDocumento, activo) // Llamada al constructor de Cliente
         {
             TieneCarnet = tieneCarnet;
+
         }
 
         // Método ToString para imprimir la información del socio

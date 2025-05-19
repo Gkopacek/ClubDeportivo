@@ -3,6 +3,7 @@
 
 using System.Data;
 using MenuPrincipalClub.Datos;
+using MenuPrincipalClub.Entidades;
 using MySql.Data.MySqlClient;
 
 namespace pruebas_club_deportivo
@@ -15,31 +16,31 @@ public class ServicioCliente
         
 
         // Primer servio obtener todos los usuarios
-        public List<Usuario> ObtenerUsuarios() 
+        public List<E_Cliente> ObtenerUsuarios() 
         {
-            var listaUsuarios = new List<Usuario>();
+            var listaUsuarios = new List<E_Cliente>();
             MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
             MySqlCommand comando = new MySqlCommand("ObtenerSocios", sqlCon);
             {
                 comando.CommandType = CommandType.StoredProcedure;
                 sqlCon.Open();
-                using (var lector = comando.ExecuteReader())
+                using (var cliente = comando.ExecuteReader())
                 {
-                    
-                    while (lector.Read())
-                    {
-                        listaUsuarios.Add(new Usuario
-                        {
-
-                            Id = lector.GetInt32(0),
-                            Nombre = lector.GetString(1),
+                    E_Cliente clienteNuevo;
+                    while (cliente.Read())
+                    {   
+                         clienteNuevo = new E_Cliente(
+                            
+                            cliente.GetString(1),
+                            "asd",                        
                             //Estado = (Estado)Enum.Parse(typeof(Estado), lector.GetString(4), ignoreCase: true)
-                            Estado = Enum.TryParse(lector.GetString(4), ignoreCase: true, out Estado estado)
-        ? estado
-        : Estado.Inactivo
+                            cliente.GetString(2),
+                            true
 
-                        });
-                        
+                        );
+                        listaUsuarios.Add(clienteNuevo);
+
+                        clienteNuevo.idCliente = cliente.GetInt32(0);
                     }
                     
                 }
