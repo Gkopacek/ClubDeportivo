@@ -1,8 +1,6 @@
-﻿namespace MenuPrincipalClub
-
-   
+﻿namespace MenuPrincipalClub.Forms
 {
-    partial class frmPrincipal
+    partial class frmRegistrarSocio
     {
         /// <summary>
         /// Required designer variable.
@@ -32,75 +30,79 @@
         {
             button1 = new Button();
             label1 = new Label();
-            dataGridView1 = new DataGridView();
+            label2 = new Label();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
             button2 = new Button();
-            button4 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(92, 216);
+            button1.Location = new Point(453, 328);
             button1.Name = "button1";
-            button1.Size = new Size(143, 23);
+            button1.Size = new Size(129, 48);
             button1.TabIndex = 0;
-            button1.Text = "Mostrar Afiliados";
+            button1.Text = "Registrar";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(322, 43);
+            label1.Location = new Point(184, 98);
             label1.Name = "label1";
-            label1.Size = new Size(107, 15);
+            label1.Size = new Size(70, 15);
             label1.TabIndex = 1;
-            label1.Text = "Menu de Opciones";
+            label1.Text = "Documento";
             label1.Click += label1_Click;
             // 
-            // dataGridView1
+            // label2
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(69, 275);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(666, 150);
-            dataGridView1.TabIndex = 2;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            label2.AutoSize = true;
+            label2.Location = new Point(184, 199);
+            label2.Name = "label2";
+            label2.Size = new Size(107, 15);
+            label2.TabIndex = 2;
+            label2.Text = "Nombre y Apellido";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(406, 95);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(201, 23);
+            textBox1.TabIndex = 3;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(406, 191);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(201, 23);
+            textBox2.TabIndex = 4;
             // 
             // button2
             // 
-            button2.Location = new Point(435, 216);
+            button2.Location = new Point(174, 328);
             button2.Name = "button2";
-            button2.Size = new Size(140, 23);
-            button2.TabIndex = 3;
-            button2.Text = "Registrar Socio";
+            button2.Size = new Size(127, 48);
+            button2.TabIndex = 5;
+            button2.Text = "Cancelar";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // button4
-            // 
-            button4.Location = new Point(269, 216);
-            button4.Name = "button4";
-            button4.Size = new Size(136, 23);
-            button4.TabIndex = 5;
-            button4.Text = "Buscar por DNI";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
-            // 
-            // frmPrincipal
+            // frmRegistrarSocio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button4);
             Controls.Add(button2);
-            Controls.Add(dataGridView1);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
+            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(button1);
-            Name = "frmPrincipal";
-            Text = "Form2";
-            Load += Form2_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Name = "frmRegistrarSocio";
+            Text = "frmRegistrarSocio";
+            Load += frmRegistrarSocio_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -109,8 +111,9 @@
 
         private Button button1;
         private Label label1;
-        public DataGridView dataGridView1;
+        private Label label2;
+        private TextBox textBox1;
+        private TextBox textBox2;
         private Button button2;
-        private Button button4;
     }
 }

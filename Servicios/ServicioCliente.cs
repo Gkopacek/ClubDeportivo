@@ -48,6 +48,60 @@ public class ServicioCliente
 
             return listaUsuarios;
         }
+
+
+        // Segundo servicio buscar un usuario por su documento
+        public Usuario ObtenerUsuarioPorDocumento(string documento)
+        {
+            Usuario usuario = null;
+            MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
+            MySqlCommand comando = new MySqlCommand("BuscarSocioPorDocumento", sqlCon);
+            {
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@p_documento", documento);
+                sqlCon.Open();
+                using (var lector = comando.ExecuteReader())
+                {
+                    if (lector.Read())
+                    {
+                        usuario = new Usuario
+                        {
+                            Id = lector.GetInt32(0),
+                            Nombre = lector.GetString(1),
+                            Documento = lector.GetString(2),
+                            Fecha_Inscripcion = lector.GetDateTime(3),
+                            Estado = Enum.TryParse(lector.GetString(4), ignoreCase: true, out Estado estado)
+                                ? estado
+                                : Estado.Inactivo
+                        };
+                    }
+                }
+            }
+            return usuario;
+        }
+
+        // Tercer servicio insertar un usuario a la db
+        // stored prodcedure InsertarSocio
+       public bool InsertarUsuario(Usuario usuario)
+        {
+            bool exito = false;
+            MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
+            MySqlCommand comando = new MySqlCommand("InsertarSocio", sqlCon);
+            {
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@nombre", usuario.Nombre);
+                comando.Parameters.AddWithValue("@documento", usuario.Documento);
+                comando.Parameters.AddWithValue("@fecha", usuario.Fecha_Inscripcion);
+                comando.Parameters.AddWithValue("@estado", usuario.Estado.ToString());
+
+                sqlCon.Open();
+                int filasAfectadas = comando.ExecuteNonQuery();
+                exito = filasAfectadas > 0;
+            }
+            return exito;
+        }
+
+
     }
 
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MenuPrincipalClub.Datos;
+using MenuPrincipalClub.Forms;
 using pruebas_club_deportivo;
 
 namespace MenuPrincipalClub
@@ -58,6 +59,23 @@ namespace MenuPrincipalClub
                 // Manejar el caso en que no se encontraron usuarios
                 MessageBox.Show("No se encontraron usuarios.");
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmRegistrarSocio frmregistrarsocio = new frmRegistrarSocio();
+            frmregistrarsocio.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            frmBusquedaDNI frmBusquedaDNI = new frmBusquedaDNI();
+            frmBusquedaDNI.Show();
         }
     }
 }
