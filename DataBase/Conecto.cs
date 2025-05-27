@@ -1,7 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 
 
-namespace pruebas_club_deportivo
+namespace MenuPrincipalClub.Datos
 {
     public class Conecto
     {

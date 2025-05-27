@@ -8,8 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MenuPrincipalClub.Datos;
+using MenuPrincipalClub.Entidades;
 using MenuPrincipalClub.Forms;
-using pruebas_club_deportivo;
+using MenuPrincipalClub.Servicios;
 
 namespace MenuPrincipalClub
 {

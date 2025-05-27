@@ -5,7 +5,6 @@ using System.Data;
 using MenuPrincipalClub.Datos;
 using MenuPrincipalClub.Entidades;
 using MySql.Data.MySqlClient;
-using pruebas_club_deportivo;
 
 namespace MenuPrincipalClub.Servicios
 {

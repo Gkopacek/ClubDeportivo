@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MenuPrincipalClub.Entidades;
 
 namespace MenuPrincipalClub.Forms
 {
@@ -43,11 +44,11 @@ namespace MenuPrincipalClub.Forms
             {
                 // Aquí puedes agregar el código para registrar el nuevo socio
                 // Por ejemplo, llamar a un método en ServicioCliente para agregar el usuario
-                var nuevoUsuario = new pruebas_club_deportivo.Usuario
+                var nuevoUsuario = new Usuario
                 {
                     Nombre = textBox2.Text.Trim(),
                     Documento = documento,
-                    Estado = pruebas_club_deportivo.Estado.Activo,
+                    Estado = Estado.Activo,
                     Fecha_Inscripcion = DateTime.Now // Asignar la fecha actual
                 };
                 servicioCliente.InsertarUsuario(nuevoUsuario); // Asegúrate de que este método exista en ServicioCliente

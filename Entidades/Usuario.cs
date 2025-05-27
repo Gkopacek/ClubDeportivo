@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace pruebas_club_deportivo
+namespace MenuPrincipalClub.Entidades
 {
 
     public enum Estado
