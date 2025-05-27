@@ -35,8 +35,11 @@ public class ServicioCliente
                             Nombre = lector.GetString(1),
                             //Estado = (Estado)Enum.Parse(typeof(Estado), lector.GetString(4), ignoreCase: true)
                             Estado = Enum.TryParse(lector.GetString(4), ignoreCase: true, out Estado estado)
-        ? estado
-        : Estado.Inactivo
+                        ? estado
+                        : Estado.Inactivo,
+
+                            Fecha_Inscripcion = lector.GetDateTime(3),
+                            Documento = lector.GetString(2)
 
                         });
                         

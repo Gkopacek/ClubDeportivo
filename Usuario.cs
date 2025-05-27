@@ -26,6 +26,9 @@ namespace pruebas_club_deportivo
         public string Nombre { get; set; }
         
         public Estado Estado { get; set; }
+
+        public DateTime Fecha_Inscripcion { get; set; } // Added this property to fix the error
+        public string Documento { get; set; } // Added this property as it is used in the ServicioCliente class
     }
 
 }
