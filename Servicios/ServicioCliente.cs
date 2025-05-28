@@ -13,9 +13,9 @@ namespace MenuPrincipalClub.Servicios
 public class ServicioCliente
     {
         // Primer servicio obtener todos los usuarios
-        public List<Usuario> ObtenerUsuarios()
+        public List<Socio> ObtenerUsuarios()
         {
-            var listaUsuarios = new List<Usuario>();
+            var listaUsuarios = new List<Socio>();
 
             // Ensure the Conexion class has a static method getInstancia() that returns an instance of Conexion
             // If it doesn't exist, you need to implement it in the Conexion class.
@@ -32,7 +32,7 @@ public class ServicioCliente
             {
                 while (lector.Read())
                 {
-                    listaUsuarios.Add(new Usuario
+                    listaUsuarios.Add(new Socio
                     {
                         Id = lector.GetInt32(0),
                         Nombre = lector.GetString(1),
@@ -50,9 +50,9 @@ public class ServicioCliente
 
 
         // Segundo servicio buscar un usuario por su documento
-        public Usuario ObtenerUsuarioPorDocumento(string documento)
+        public Socio ObtenerUsuarioPorDocumento(string documento)
         {
-            Usuario usuario = null;
+            Socio usuario = null;
             MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
             MySqlCommand comando = new MySqlCommand("BuscarSocioPorDocumento", sqlCon);
             {
@@ -63,7 +63,7 @@ public class ServicioCliente
                 {
                     if (lector.Read())
                     {
-                        usuario = new Usuario
+                        usuario = new Socio
                         {
                             Id = lector.GetInt32(0),
                             Nombre = lector.GetString(1),
@@ -81,7 +81,7 @@ public class ServicioCliente
 
         // Tercer servicio insertar un usuario a la db
         // stored prodcedure InsertarSocio
-       public bool InsertarUsuario(Usuario usuario)
+       public bool InsertarUsuario(Socio usuario)
         {
             bool exito = false;
             MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();

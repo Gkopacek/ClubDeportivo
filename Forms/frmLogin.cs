@@ -32,7 +32,7 @@ namespace MenuPrincipalClub
         private void button1_Click(object sender, EventArgs e)
         {
             DataTable tablaLogin = new DataTable();
-            Datos.Usuarios dato = new Datos.Usuarios();
+            Datos.CUsuarios dato = new Datos.CUsuarios();
 
 
             tablaLogin = dato.LogInUsuario(txtUsuario.Text, txtPass.Text);
@@ -79,7 +79,7 @@ namespace MenuPrincipalClub
         {
             {
                 DataTable tablaLogin = new DataTable();
-                Datos.Usuarios dato = new Datos.Usuarios();
+                Datos.CUsuarios dato = new Datos.CUsuarios();
 
 
                 tablaLogin = dato.LogInUsuario(txtUsuario.Text, txtPass.Text);

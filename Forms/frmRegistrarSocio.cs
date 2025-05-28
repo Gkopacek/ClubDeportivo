@@ -44,7 +44,7 @@ namespace MenuPrincipalClub.Forms
             {
                 // Aquí puedes agregar el código para registrar el nuevo socio
                 // Por ejemplo, llamar a un método en ServicioCliente para agregar el usuario
-                var nuevoUsuario = new Usuario
+                var nuevoUsuario = new Socio
                 {
                     Nombre = textBox2.Text.Trim(),
                     Documento = documento,

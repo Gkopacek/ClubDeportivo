@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MenuPrincipalClub.Entidades
+namespace MenuPrincipalClub.Entidades.NewFolder
 {
     internal class E_Socio : E_Cliente
     {

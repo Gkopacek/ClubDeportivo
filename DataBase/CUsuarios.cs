@@ -8,7 +8,7 @@ using MySql.Data.MySqlClient;
 
 namespace MenuPrincipalClub.Datos
 {
-    internal class Usuarios
+    internal class CUsuarios
     {
         public DataTable LogInUsuario(string usuario, string contrasenia)
         {
