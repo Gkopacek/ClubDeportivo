@@ -2,9 +2,9 @@ using System.Data;
 
 namespace MenuPrincipalClub
 {
-    public partial class frmInicio : Form
+    public partial class frmLogin : Form
     {
-        public frmInicio()
+        public frmLogin()
         {
             InitializeComponent();
             txtPass.UseSystemPasswordChar = true;

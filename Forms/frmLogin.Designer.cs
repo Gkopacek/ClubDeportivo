@@ -1,6 +1,6 @@
 ﻿namespace MenuPrincipalClub
 {
-    partial class frmInicio
+    partial class frmLogin
     {
         /// <summary>
         ///  Required designer variable.

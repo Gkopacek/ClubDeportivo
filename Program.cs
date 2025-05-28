@@ -16,6 +16,6 @@ static class Program
     {
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
-        Application.Run(new frmInicio()); // Asegúrate de que `Form1` es el formulario correcto
+        Application.Run(new frmLogin()); // Asegúrate de que `Form1` es el formulario correcto
     }
 }

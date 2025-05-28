@@ -100,6 +100,25 @@ public class ServicioCliente
             return exito;
         }
 
+        // registramos pago a la db
+        public bool RegistrarPago(Pago pago)
+        {
+            bool exito = false;
+            MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
+            MySqlCommand comando = new MySqlCommand("RegistrarPago", sqlCon);
+            {
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@p_documento", pago.Documento);
+                //comando.Parameters.AddWithValue("@fecha", pago.Fecha);
+                comando.Parameters.AddWithValue("@p_monto", pago.Monto);
+                comando.Parameters.AddWithValue("@p_metodo_pago", pago.MetodoPago);
+                sqlCon.Open();
+                int filasAfectadas = comando.ExecuteNonQuery();
+                exito = filasAfectadas > 0;
+            }
+            return exito;
+        }
+
 
     }
 

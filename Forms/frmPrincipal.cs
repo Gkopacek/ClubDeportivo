@@ -78,5 +78,37 @@ namespace MenuPrincipalClub
             frmBusquedaDNI frmBusquedaDNI = new frmBusquedaDNI();
             frmBusquedaDNI.Show();
         }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            // funcion aun no disponible
+            MessageBox.Show("Función aún no disponible. 2", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //abrimos el form para buscar por dni
+            
+            //verificamos si existe el dni en la db
+
+            ServicioCliente servicioCliente = new ServicioCliente();
+            //Usuario? usuario = servicioCliente.ObtenerUsuarioPorDocumento();
+
+            //si existe abrimos el formulario para registrar pago
+            if (usuario != null)
+            {
+                frmRegistrarPago frmRegistrarPago = new frmRegistrarPago();
+                frmRegistrarPago.Show();
+            }
+            else
+            {
+                //si no existe mostramos un mensaje de error
+                MessageBox.Show("El usuario con el DNI ingresado no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+
+
+        }
     }
 }
