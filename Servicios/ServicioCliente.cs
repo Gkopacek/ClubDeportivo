@@ -87,15 +87,35 @@ public class ServicioCliente
             MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
             MySqlCommand comando = new MySqlCommand("InsertarSocio", sqlCon);
             {
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("@nombre", usuario.Nombre);
-                comando.Parameters.AddWithValue("@documento", usuario.Documento);
-                comando.Parameters.AddWithValue("@fecha", usuario.Fecha_Inscripcion);
-                comando.Parameters.AddWithValue("@estado", usuario.Estado.ToString());
+                //mostramos un mensaje verificamos nombre y documento que no este vacio
+                if (string.IsNullOrWhiteSpace(usuario.Nombre) || string.IsNullOrWhiteSpace(usuario.Documento))
+                {
+                    MessageBox.Show("El nombre y el documento no pueden estar vacíos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@nombre", usuario.Nombre);
+                    comando.Parameters.AddWithValue("@documento", usuario.Documento);
+                    comando.Parameters.AddWithValue("@fecha", usuario.Fecha_Inscripcion);
+                    comando.Parameters.AddWithValue("@estado", usuario.Estado.ToString());
 
-                sqlCon.Open();
-                int filasAfectadas = comando.ExecuteNonQuery();
-                exito = filasAfectadas > 0;
+                    sqlCon.Open();
+                    int filasAfectadas = comando.ExecuteNonQuery();
+                    exito = filasAfectadas > 0;
+                    //emitimos un mensaje de exito
+                    if (exito)
+                    {
+                        MessageBox.Show("Usuario registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al registrar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+
+
             }
             return exito;
         }

@@ -52,7 +52,7 @@ namespace MenuPrincipalClub.Forms
                     Fecha_Inscripcion = DateTime.Now // Asignar la fecha actual
                 };
                 servicioCliente.InsertarUsuario(nuevoUsuario); // Asegúrate de que este método exista en ServicioCliente
-                MessageBox.Show("Usuario registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
                 frmRegistrarSocio.ActiveForm.Close();
             }
             //luego se cierra el form
