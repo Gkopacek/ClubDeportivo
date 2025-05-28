@@ -120,6 +120,23 @@ public class ServicioCliente
         }
 
 
+        //Actualizamos lista de deudores en la db haciendo call al procedure
+        public bool ActualizarDeudores()
+        {
+            bool exito = false;
+            MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
+            MySqlCommand comando = new MySqlCommand("ActualizarDeudores", sqlCon);
+            {
+                comando.CommandType = CommandType.StoredProcedure;
+                sqlCon.Open();
+                int filasAfectadas = comando.ExecuteNonQuery();
+                exito = filasAfectadas > 0;
+            }
+            return exito;
+        }
+
+
+
     }
 
 }

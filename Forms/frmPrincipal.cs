@@ -75,14 +75,40 @@ namespace MenuPrincipalClub
 
         private void button4_Click(object sender, EventArgs e)
         {
-            frmBusquedaDNI frmBusquedaDNI = new frmBusquedaDNI();
-            frmBusquedaDNI.Show();
+            //frmBusquedaDNI frmBusquedaDNI = new frmBusquedaDNI();
+            //frmBusquedaDNI.Show();
+
+            //funcion en manetenimiento
+            MessageBox.Show("Función aún no disponible.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
+            // llamos al service y actualizamos lista de deudores en la db
+            ServicioCliente servicioCliente = new ServicioCliente();
+            servicioCliente.ActualizarDeudores();
+            //avisamos que la lista de deudores fue actualizada
+            MessageBox.Show("Lista de deudores actualizada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //traemos los socios a una lista
+            List<Usuario> usuarios = servicioCliente.ObtenerUsuarios();
+            // y mostamos en el datagridview los que tienen estado inactivo 
+            if (usuarios != null) {
+                // Filtramos los usuarios que están inactivos
+                var deudores = usuarios.Where(u => u.Estado == Estado.Inactivo).ToList();
+                // Asignamos la lista filtrada al DataGridView
+                dataGridView1.DataSource = deudores;
+            }
+            else
+            {
+                // Manejar el caso en que no se encontraron usuarios
+                MessageBox.Show("No se encontraron usuarios.");
+            }
+
+
+
             // funcion aun no disponible
-            MessageBox.Show("Función aún no disponible. 2", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("Función aún no disponible. 2", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void button5_Click(object sender, EventArgs e)
