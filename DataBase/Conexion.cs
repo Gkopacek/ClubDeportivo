@@ -18,7 +18,7 @@ namespace MenuPrincipalClub.Datos
             this.svDB = "127.0.0.1";
             this.puertoDB = "3306";
             this.usuario = "root";
-            this.contrasenia = "";
+            this.contrasenia = "root";
         }
 
         public MySqlConnection CrearConexion()

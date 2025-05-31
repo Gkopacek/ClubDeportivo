@@ -123,7 +123,7 @@ namespace MenuPrincipalClub
             //si existe abrimos el formulario para registrar pago
             if (usuario != null)
             {
-                frmRegistrarPago frmRegistrarPago = new frmRegistrarPago();
+                frmRegistrarSocio frmRegistrarPago = new frmRegistrarSocio();
                 frmRegistrarPago.Show();
             }
             else

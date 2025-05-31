@@ -15,11 +15,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Forms\Pruebas\frmRegistrarSocio2.cs" />
+    <Compile Remove="Forms\Pruebas\frmRegistrarSocio2.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Forms\Pruebas\frmRegistrarSocio2.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MySql.Data" Version="9.3.0" />
     <PackageReference Include="MySqlConnector" Version="2.4.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Forms\Pruebas\" />
     <Folder Include="Sql\" />
   </ItemGroup>
 

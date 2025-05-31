@@ -71,7 +71,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(313, 82);
+            button2.Location = new Point(617, 179);
             button2.Name = "button2";
             button2.Size = new Size(171, 59);
             button2.TabIndex = 3;
@@ -101,11 +101,11 @@
             // 
             // button5
             // 
-            button5.Location = new Point(528, 82);
+            button5.Location = new Point(313, 80);
             button5.Name = "button5";
-            button5.Size = new Size(146, 61);
+            button5.Size = new Size(171, 61);
             button5.TabIndex = 7;
-            button5.Text = "Realizar Pago";
+            button5.Text = "Registrar Socio";
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
             // 

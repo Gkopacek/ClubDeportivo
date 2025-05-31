@@ -23,8 +23,8 @@ namespace MenuPrincipalClub.Datos
 
                 comando.CommandType = CommandType.StoredProcedure;
 
-                comando.Parameters.Add("Usu", MySqlDbType.VarChar).Value = usuario;
-                comando.Parameters.Add("Pass", MySqlDbType.VarChar).Value = contrasenia;
+                comando.Parameters.Add("@Usu", MySqlDbType.VarChar).Value = usuario;
+                comando.Parameters.Add("@Pass", MySqlDbType.VarChar).Value = contrasenia;
 
                 sqlCon.Open();
                 resultado = comando.ExecuteReader();
