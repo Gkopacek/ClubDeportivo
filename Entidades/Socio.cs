@@ -20,16 +20,16 @@ namespace MenuPrincipalClub.Entidades
     public class Socio : Cliente
     {
         //hacemos que heredemos de persona y agregamos los atributos: id, estado, fecha de inscripcion
-        public int Id { get; set; }
+        public int Nsocio { get; set; }
         public Estado Estado { get; set; }
         public DateTime Fecha_Inscripcion { get; set; }
         //definimos un constructor para inicializar los valores
-        public Socio(string nombre, string apellido, string documento, int id, Estado estado, DateTime fechaInscripcion)
+        public Socio(string nombre, string apellido, string documento, int nsocio, Estado estado, DateTime fechaInscripcion)
         {
             Nombre = nombre;
             
             Documento = documento;
-            Id = id;
+            Nsocio = nsocio;
             Estado = estado;
             Fecha_Inscripcion = fechaInscripcion;
         }
@@ -37,7 +37,7 @@ namespace MenuPrincipalClub.Entidades
         {
             Nombre = string.Empty;
             Documento = string.Empty;
-            Id = 0;
+            Nsocio = 0;
             Estado = Estado.Activo;
             Fecha_Inscripcion = DateTime.Now;
         }

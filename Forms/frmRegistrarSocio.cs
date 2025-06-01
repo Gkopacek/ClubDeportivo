@@ -164,7 +164,7 @@ namespace MenuPrincipalClub.Forms
                         Fecha_Inscripcion = DateTime.Now // Asignar la fecha actual
                     };
 
-                    servicioCliente.InsertarUsuario(nuevoUsuario);
+                    servicioCliente.RegistrarSocio(nuevoUsuario);
 
                     // Creamos una instancia de Pago con los datos ingresados
                     Pago nuevoPago = new Pago

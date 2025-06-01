@@ -34,7 +34,7 @@ public class ServicioCliente
                 {
                     listaUsuarios.Add(new Socio
                     {
-                        Id = lector.GetInt32(0),
+                        Nsocio = lector.GetInt32(0),
                         Nombre = lector.GetString(1),
                         Estado = Enum.TryParse(lector.GetString(4), ignoreCase: true, out Estado estado)
                             ? estado
@@ -65,7 +65,7 @@ public class ServicioCliente
                     {
                         usuario = new Socio
                         {
-                            Id = lector.GetInt32(0),
+                            Nsocio = lector.GetInt32(0),
                             Nombre = lector.GetString(1),
                             Documento = lector.GetString(2),
                             Fecha_Inscripcion = lector.GetDateTime(3),
@@ -81,24 +81,24 @@ public class ServicioCliente
 
         // Tercer servicio insertar un usuario a la db
         // stored prodcedure InsertarSocio
-       public bool InsertarUsuario(Socio usuario)
+       public bool RegistrarSocio(Socio socio)
         {
             bool exito = false;
             MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
             MySqlCommand comando = new MySqlCommand("InsertarSocio", sqlCon);
             {
                 //mostramos un mensaje verificamos nombre y documento que no este vacio
-                if (string.IsNullOrWhiteSpace(usuario.Nombre) || string.IsNullOrWhiteSpace(usuario.Documento))
+                if (string.IsNullOrWhiteSpace(socio.Nombre) || string.IsNullOrWhiteSpace(socio.Documento))
                 {
                     MessageBox.Show("El nombre y el documento no pueden estar vacíos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("@nombre", usuario.Nombre);
-                    comando.Parameters.AddWithValue("@documento", usuario.Documento);
-                    comando.Parameters.AddWithValue("@fecha", usuario.Fecha_Inscripcion);
-                    comando.Parameters.AddWithValue("@estado", usuario.Estado.ToString());
+                    comando.Parameters.AddWithValue("@nombre", socio.Nombre);
+                    comando.Parameters.AddWithValue("@documento", socio.Documento);
+                    comando.Parameters.AddWithValue("@fecha", socio.Fecha_Inscripcion);
+                    comando.Parameters.AddWithValue("@estado", socio.Estado.ToString());
 
                     sqlCon.Open();
                     int filasAfectadas = comando.ExecuteNonQuery();
@@ -151,6 +151,45 @@ public class ServicioCliente
                 sqlCon.Open();
                 int filasAfectadas = comando.ExecuteNonQuery();
                 exito = filasAfectadas > 0;
+            }
+            return exito;
+        }
+
+        public bool RegistrarCliente(Cliente cliente)
+        {
+            bool exito = false;
+            MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
+            MySqlCommand comando = new MySqlCommand("InsertarSocio", sqlCon);
+            {
+                //mostramos un mensaje verificamos nombre y documento que no este vacio
+                if (string.IsNullOrWhiteSpace(cliente.Nombre) || string.IsNullOrWhiteSpace(cliente.Documento))
+                {
+                    MessageBox.Show("El nombre y el documento no pueden estar vacíos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@nombre", cliente.Nombre);
+                    comando.Parameters.AddWithValue("@documento", cliente.Documento);
+                   // comando.Parameters.AddWithValue("@fecha", cliente.Fecha_Inscripcion);
+                   // comando.Parameters.AddWithValue("@estado", cliente.Estado.ToString());
+
+                    sqlCon.Open();
+                    int filasAfectadas = comando.ExecuteNonQuery();
+                    exito = filasAfectadas > 0;
+                    //emitimos un mensaje de exito
+                    if (exito)
+                    {
+                        MessageBox.Show("Usuario registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al registrar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+
+
             }
             return exito;
         }

@@ -93,7 +93,8 @@ namespace MenuPrincipalClub
             //traemos los socios a una lista
             List<Socio> usuarios = servicioCliente.ObtenerUsuarios();
             // y mostamos en el datagridview los que tienen estado inactivo 
-            if (usuarios != null) {
+            if (usuarios != null)
+            {
                 // Filtramos los usuarios que están inactivos
                 var deudores = usuarios.Where(u => u.Estado == Estado.Inactivo).ToList();
                 // Asignamos la lista filtrada al DataGridView
@@ -114,7 +115,7 @@ namespace MenuPrincipalClub
         private void button5_Click(object sender, EventArgs e)
         {
             //abrimos el form para buscar por dni
-            
+
             //verificamos si existe el dni en la db
 
             ServicioCliente servicioCliente = new ServicioCliente();
@@ -135,6 +136,12 @@ namespace MenuPrincipalClub
 
 
 
+        }
+
+        private void btnRegistrarCliente_Click(object sender, EventArgs e)
+        {
+            frmRegistrarCliente frmRegistrarCliente = new frmRegistrarCliente();
+            frmRegistrarCliente.Show();
         }
     }
 }
