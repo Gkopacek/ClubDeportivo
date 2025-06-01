@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MenuPrincipalClub.Entidades
 {
-    public abstract class Persona
+    public abstract class Cliente
     {
 
 

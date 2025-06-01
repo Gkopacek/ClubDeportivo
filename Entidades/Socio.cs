@@ -17,7 +17,7 @@ namespace MenuPrincipalClub.Entidades
 
     }
 
-    public class Socio : Persona
+    public class Socio : Cliente
     {
         //hacemos que heredemos de persona y agregamos los atributos: id, estado, fecha de inscripcion
         public int Id { get; set; }
