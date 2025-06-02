@@ -54,7 +54,7 @@ public class ServicioCliente
         {
             Socio usuario = null;
             MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
-            MySqlCommand comando = new MySqlCommand("BuscarSocioPorDocumento", sqlCon);
+            MySqlCommand comando = new MySqlCommand("BuscarSocioPorNumeroDeSocio", sqlCon);
             {
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.AddWithValue("@p_documento", documento);
@@ -79,34 +79,104 @@ public class ServicioCliente
             return usuario;
         }
 
+        public Socio ObtenerSocioPorNumeroDeSocio(int numeroDeSocio)
+        {
+            Socio socio = null;
+            MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
+            MySqlCommand comando = new MySqlCommand("BuscarSocioPorNumero", sqlCon);
+
+            try
+            {
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@p_Nsocio", numeroDeSocio);
+
+                sqlCon.Open();
+
+                using (var lector = comando.ExecuteReader())
+                {
+                    if (lector.Read())
+                    {
+                        socio = new Socio(
+                            lector.GetString(1),  // Nombre
+                            lector.GetString(2),  // Apellido
+                            lector.GetString(3),  // Documento
+                            string.Empty,         // Email (no se usa en Cliente)
+                            string.Empty          // Telefono (no se usa en Cliente)
+                        )
+                        {
+                            Nsocio = lector.GetInt32(0),
+                            Fecha_Inscripcion = lector.GetDateTime(4),
+                            Estado = Enum.TryParse(
+                                lector.GetString(5).ToLower(),
+                                ignoreCase: true,
+                                out Estado estado
+                            ) ? estado : Estado.Inactivo
+                        };
+                    }
+                }
+            }
+            finally
+            {
+                sqlCon.Close();
+            }
+
+            return socio;
+        }
+
+
+        public Cliente ObtenerClientePorDocumento(string documento)
+{
+    Cliente cliente = null;
+    MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
+    MySqlCommand comando = new MySqlCommand("BuscarClientePorDocumento", sqlCon);
+    {
+        comando.CommandType = CommandType.StoredProcedure;
+        comando.Parameters.AddWithValue("@p_documento", documento);
+
+        sqlCon.Open();
+        using (var lector = comando.ExecuteReader())
+        {
+            if (lector.Read())
+            {
+                cliente = new Cliente(
+                    lector.GetString(0), // Nombre
+                    lector.GetString(1), // Apellido
+                    lector.GetString(2), // Documento
+                    lector.GetString(3), // Email
+                    lector.GetString(4)  // Telefono
+                );
+            }
+        }
+    }
+    return cliente;
+}
+
+
         // Tercer servicio insertar un usuario a la db
         // stored prodcedure InsertarSocio
-       public bool RegistrarSocio(Socio socio)
+      /* public bool RegistrarSocio(Cliente cliente)
         {
-            bool exito = false;
+            
             MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
-            MySqlCommand comando = new MySqlCommand("InsertarSocio", sqlCon);
+            
             {
                 //mostramos un mensaje verificamos nombre y documento que no este vacio
-                if (string.IsNullOrWhiteSpace(socio.Nombre) || string.IsNullOrWhiteSpace(socio.Documento))
+                if (string.IsNullOrWhiteSpace(cliente.Nombre) || string.IsNullOrWhiteSpace(cliente.Documento))
                 {
+                   
                     MessageBox.Show("El nombre y el documento no pueden estar vacíos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("@nombre", socio.Nombre);
-                    comando.Parameters.AddWithValue("@documento", socio.Documento);
-                    comando.Parameters.AddWithValue("@fecha", socio.Fecha_Inscripcion);
-                    comando.Parameters.AddWithValue("@estado", socio.Estado.ToString());
+                    string documento = cliente.Documento;
+                    Cliente clienteobtenido  =  ObtenerClientePorDocumento(documento);
 
-                    sqlCon.Open();
-                    int filasAfectadas = comando.ExecuteNonQuery();
-                    exito = filasAfectadas > 0;
-                    //emitimos un mensaje de exito
-                    if (exito)
+                   
+                    if (clienteobtenido != null)
                     {
-                        MessageBox.Show("Usuario registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("cliente encontrado.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                       // Socio socio = ObtenerSocioPorNumeroDeSocio();
                     }
                     else
                     {
@@ -118,7 +188,7 @@ public class ServicioCliente
 
             }
             return exito;
-        }
+        } */
 
         // registramos pago a la db
         public bool RegistrarPago(Pago pago)
@@ -158,41 +228,73 @@ public class ServicioCliente
         public bool RegistrarCliente(Cliente cliente)
         {
             bool exito = false;
-            MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
-            MySqlCommand comando = new MySqlCommand("InsertarSocio", sqlCon);
-            {
-                //mostramos un mensaje verificamos nombre y documento que no este vacio
-                if (string.IsNullOrWhiteSpace(cliente.Nombre) || string.IsNullOrWhiteSpace(cliente.Documento))
-                {
-                    MessageBox.Show("El nombre y el documento no pueden estar vacíos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("@nombre", cliente.Nombre);
-                    comando.Parameters.AddWithValue("@documento", cliente.Documento);
-                   // comando.Parameters.AddWithValue("@fecha", cliente.Fecha_Inscripcion);
-                   // comando.Parameters.AddWithValue("@estado", cliente.Estado.ToString());
 
+            // Validaciones básicas y de correo electrónico
+            if (string.IsNullOrWhiteSpace(cliente.Nombre) ||
+                string.IsNullOrWhiteSpace(cliente.Apellido) ||
+                string.IsNullOrWhiteSpace(cliente.Documento))
+            {
+                MessageBox.Show("El nombre, apellido y documento son obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            // Validación de email con expresión regular
+            if (!string.IsNullOrEmpty(cliente.Email) && !ValidarEmail(cliente.Email))
+            {
+                MessageBox.Show("El formato del correo electrónico es inválido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            try
+            {
+                using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+                using (MySqlCommand comando = new MySqlCommand("InsertarCliente", sqlCon))
+                {
+                    // Configuración del procedimiento almacenado
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    // Asignar parámetros al stored procedure
+                    comando.Parameters.AddWithValue("@pNombre", cliente.Nombre);
+                    comando.Parameters.AddWithValue("@pApellido", cliente.Apellido);
+                    comando.Parameters.AddWithValue("@pDocumento", cliente.Documento);
+                    comando.Parameters.AddWithValue("@pEmail", cliente.Email);  // Manejo de null
+                    comando.Parameters.AddWithValue("@pTelefono", cliente.Telefono);
+
+                    // Abrir conexión y ejecutar
                     sqlCon.Open();
                     int filasAfectadas = comando.ExecuteNonQuery();
                     exito = filasAfectadas > 0;
-                    //emitimos un mensaje de exito
+
+                    // Mensajes según el resultado
                     if (exito)
                     {
-                        MessageBox.Show("Usuario registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Cliente registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Error al registrar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error al registrar el cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
-
-
             }
+            catch (Exception ex)
+            {
+                // Manejo de errores generales
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error Crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             return exito;
         }
+
+        // Método para validar formato de correo electrónico
+        private bool ValidarEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+                return false;
+
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return System.Text.RegularExpressions.Regex.IsMatch(email, pattern);
+        }
+
 
 
 
