@@ -13,16 +13,16 @@ namespace MenuPrincipalClub.Servicios
 public class ServicioCliente
     {
         // Primer servicio obtener todos los usuarios
-        public List<Socio> ObtenerUsuarios()
+        public List<Socio> ObtenerSocios()
         {
-            var listaUsuarios = new List<Socio>();
+            var listaSocios = new List<Socio>();
 
             // Ensure the Conexion class has a static method getInstancia() that returns an instance of Conexion
             // If it doesn't exist, you need to implement it in the Conexion class.
             var conexionInstancia = Conexion.getInstancia(); // Ensure this method exists in Conexion class
             MySqlConnection sqlCon = conexionInstancia.CrearConexion();
 
-            MySqlCommand comando = new MySqlCommand("ObtenerSocios", sqlCon)
+            MySqlCommand comando = new MySqlCommand("BuscarSocios", sqlCon)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -32,20 +32,29 @@ public class ServicioCliente
             {
                 while (lector.Read())
                 {
-                    listaUsuarios.Add(new Socio
+                    listaSocios.Add(new Socio
                     {
-                        
+
                         Nombre = lector.GetString(1),
+                        Documento = lector.GetString(2),
                         Estado = Enum.TryParse(lector.GetString(4), ignoreCase: true, out Estado estado)
                             ? estado
                             : Estado.Inactivo,
                         Fecha_Inscripcion = lector.GetDateTime(3),
-                        Documento = lector.GetString(2)
+                        // Fix for CS0029: Cannot implicitly convert type 'string' to 'MenuPrincipalClub.Entidades.Tipo'
+                        // Adjusting the code to parse the string into the 'Tipo' enum.
+                        Tipo = Enum.TryParse(lector.GetString(5), ignoreCase: true, out Tipo tipo)
+                            ? tipo
+                            : Tipo.Socio // Default value if parsing fails
+                            ,
+                        Apto_Fisico = lector.GetBoolean(6) // Uncomment if you have this field in your database
+
+
                     });
                 }
             }
 
-            return listaUsuarios;
+            return listaSocios;
         }
 
 
@@ -54,7 +63,7 @@ public class ServicioCliente
         {
             Socio usuario = null;
             MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
-            MySqlCommand comando = new MySqlCommand("BuscarSocioPorDocumento", sqlCon);
+            MySqlCommand comando = new MySqlCommand("BuscarPersonaPorDocumento", sqlCon);
             {
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.AddWithValue("@p_documento", documento);
@@ -85,7 +94,7 @@ public class ServicioCliente
         {
             bool exito = false;
             MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
-            MySqlCommand comando = new MySqlCommand("InsertarSocio", sqlCon);
+            MySqlCommand comando = new MySqlCommand("InsertarPersona", sqlCon);
             {
                 //mostramos un mensaje verificamos nombre y documento que no este vacio
                 if (string.IsNullOrWhiteSpace(usuario.Nombre) || string.IsNullOrWhiteSpace(usuario.Documento))
@@ -95,10 +104,12 @@ public class ServicioCliente
                 else
                 {
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("@nombre", usuario.Nombre);
-                    comando.Parameters.AddWithValue("@documento", usuario.Documento);
-                    comando.Parameters.AddWithValue("@fecha", usuario.Fecha_Inscripcion);
-                    comando.Parameters.AddWithValue("@estado", usuario.Estado.ToString());
+                    comando.Parameters.AddWithValue("@p_nombre", usuario.Nombre);
+                    comando.Parameters.AddWithValue("@p_documento", usuario.Documento);
+                    comando.Parameters.AddWithValue("@p_fecha", usuario.Fecha_Inscripcion);
+                    comando.Parameters.AddWithValue("@p_estado", usuario.Estado.ToString());
+                    comando.Parameters.AddWithValue("@p_tipo", usuario.Tipo.ToString());
+                    comando.Parameters.AddWithValue("@p_apto", usuario.Apto_Fisico); // Asegúrate de que este campo exista en tu base de datos
 
                     sqlCon.Open();
                     int filasAfectadas = comando.ExecuteNonQuery();

@@ -48,12 +48,14 @@ namespace MenuPrincipalClub
 
 
             // Obtener la lista de usuarios
-            List<Socio> usuarios = ServicioCliente.ObtenerUsuarios();
+            List<Socio> usuarios = ServicioCliente.ObtenerSocios();
             // Verificar si la lista de usuarios no es nula
             if (usuarios != null)
             {
                 // Asignar la lista de usuarios al DataGridView
                 dataGridView1.DataSource = usuarios;
+                dataGridView1.Columns["Apto_Fisico"].Visible = false; // oculta el bool
+                dataGridView1.Columns["Apto_Fisico_Descripcion"].HeaderText = "Apto Físico";
             }
             else
             {
@@ -91,7 +93,7 @@ namespace MenuPrincipalClub
             MessageBox.Show("Lista de deudores actualizada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //traemos los socios a una lista
-            List<Socio> usuarios = servicioCliente.ObtenerUsuarios();
+            List<Socio> usuarios = servicioCliente.ObtenerSocios();
             // y mostamos en el datagridview los que tienen estado inactivo 
             if (usuarios != null) {
                 // Filtramos los usuarios que están inactivos

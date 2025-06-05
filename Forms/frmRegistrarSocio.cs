@@ -16,11 +16,12 @@ namespace MenuPrincipalClub.Forms
         public frmRegistrarSocio()
         {
             InitializeComponent();
+
         }
 
         private void frmRegistrarSocio_Load(object sender, EventArgs e)
         {
-
+            checkBox1.Enabled = false; // Deshabilitamos el checkbox de Apto Físico al inicio
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -55,7 +56,9 @@ namespace MenuPrincipalClub.Forms
                         Nombre = textBox2.Text.Trim(),
                         Documento = documento,
                         Estado = Estado.Activo,
-                        Fecha_Inscripcion = DateTime.Now // Asignar la fecha actual
+                        Fecha_Inscripcion = DateTime.Now,
+                        Tipo = Tipo.Socio, // Asignamos el tipo de socio
+                        Apto_Fisico = checkBox1.Checked // Asignamos si presentó apto físico
                     };
                     servicioCliente.InsertarUsuario(nuevoUsuario); // Asegúrate de que este método exista en ServicioCliente
 
@@ -82,6 +85,25 @@ namespace MenuPrincipalClub.Forms
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Verificamos si el usuario es "Socio" o "No Socio" si es socio habilitamos el checkbox
+            if (comboBox1.Text == "Socio")
+            {
+                checkBox1.Enabled = true; // Habilitamos el checkbox de Apto Físico
+            }
+            else
+            {
+                checkBox1.Enabled = false; // Deshabilitamos el checkbox de Apto Físico
+                checkBox1.Checked = false; // Desmarcamos el checkbox si no es Socio
+            }
         }
     }
 }

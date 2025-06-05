@@ -36,6 +36,7 @@
             button2 = new Button();
             comboBox1 = new ComboBox();
             label3 = new Label();
+            checkBox1 = new CheckBox();
             SuspendLayout();
             // 
             // button1
@@ -61,7 +62,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(184, 199);
+            label2.Location = new Point(184, 226);
             label2.Name = "label2";
             label2.Size = new Size(107, 15);
             label2.TabIndex = 2;
@@ -76,7 +77,7 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(406, 191);
+            textBox2.Location = new Point(406, 218);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(201, 23);
             textBox2.TabIndex = 4;
@@ -99,6 +100,7 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(201, 23);
             comboBox1.TabIndex = 6;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label3
             // 
@@ -110,11 +112,22 @@
             label3.Text = "Tipo";
             label3.Click += label3_Click;
             // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(644, 144);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(85, 19);
+            checkBox1.TabIndex = 9;
+            checkBox1.Text = "Apto Fisico";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
             // frmRegistrarSocio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(checkBox1);
             Controls.Add(label3);
             Controls.Add(comboBox1);
             Controls.Add(button2);
@@ -140,5 +153,6 @@
         private Button button2;
         private ComboBox comboBox1;
         private Label label3;
+        private CheckBox checkBox1;
     }
 }
