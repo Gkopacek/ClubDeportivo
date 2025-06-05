@@ -14,7 +14,7 @@ namespace MenuPrincipalClub.Datos
 
         public Conexion()
         {
-            this.nombreDB = "Club_Deportivo";
+            this.nombreDB = "Club_Deportivo_2";
             this.svDB = "127.0.0.1";
             this.puertoDB = "3306";
             this.usuario = "root";

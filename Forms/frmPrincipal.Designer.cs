@@ -34,7 +34,6 @@
             label1 = new Label();
             dataGridView1 = new DataGridView();
             button2 = new Button();
-            button4 = new Button();
             button3 = new Button();
             button5 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -75,23 +74,13 @@
             button2.Name = "button2";
             button2.Size = new Size(171, 59);
             button2.TabIndex = 3;
-            button2.Text = "Registrar Socio";
+            button2.Text = "Resgistrar Persona";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // button4
-            // 
-            button4.Location = new Point(92, 179);
-            button4.Name = "button4";
-            button4.Size = new Size(173, 60);
-            button4.TabIndex = 5;
-            button4.Text = "Buscar por DNI";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
-            // 
             // button3
             // 
-            button3.Location = new Point(313, 179);
+            button3.Location = new Point(94, 176);
             button3.Name = "button3";
             button3.Size = new Size(171, 60);
             button3.TabIndex = 6;
@@ -101,9 +90,9 @@
             // 
             // button5
             // 
-            button5.Location = new Point(528, 82);
+            button5.Location = new Point(313, 175);
             button5.Name = "button5";
-            button5.Size = new Size(146, 61);
+            button5.Size = new Size(171, 61);
             button5.TabIndex = 7;
             button5.Text = "Realizar Pago";
             button5.UseVisualStyleBackColor = true;
@@ -116,7 +105,6 @@
             ClientSize = new Size(800, 450);
             Controls.Add(button5);
             Controls.Add(button3);
-            Controls.Add(button4);
             Controls.Add(button2);
             Controls.Add(dataGridView1);
             Controls.Add(label1);
@@ -135,7 +123,6 @@
         private Label label1;
         public DataGridView dataGridView1;
         private Button button2;
-        private Button button4;
         private Button button3;
         private Button button5;
     }

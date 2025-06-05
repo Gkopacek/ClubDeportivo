@@ -42,18 +42,32 @@ namespace MenuPrincipalClub.Forms
             }
             else
             {
-                // Aquí puedes agregar el código para registrar el nuevo socio
-                // Por ejemplo, llamar a un método en ServicioCliente para agregar el usuario
-                var nuevoUsuario = new Socio
+                //verificamos si el combo box es "Socio" o "No Socio", si es socio hacemos el proceso de registro socio
+
+
+                if (comboBox1.Text == "Socio")
+
                 {
-                    Nombre = textBox2.Text.Trim(),
-                    Documento = documento,
-                    Estado = Estado.Activo,
-                    Fecha_Inscripcion = DateTime.Now // Asignar la fecha actual
-                };
-                servicioCliente.InsertarUsuario(nuevoUsuario); // Asegúrate de que este método exista en ServicioCliente
-                
-                frmRegistrarSocio.ActiveForm.Close();
+                    // Aquí puedes agregar el código para registrar el nuevo socio
+                    // Por ejemplo, llamar a un método en ServicioCliente para agregar el usuario
+                    var nuevoUsuario = new Socio
+                    {
+                        Nombre = textBox2.Text.Trim(),
+                        Documento = documento,
+                        Estado = Estado.Activo,
+                        Fecha_Inscripcion = DateTime.Now // Asignar la fecha actual
+                    };
+                    servicioCliente.InsertarUsuario(nuevoUsuario); // Asegúrate de que este método exista en ServicioCliente
+
+                    frmRegistrarSocio.ActiveForm.Close();
+                }
+
+                if (comboBox1.Text == "No Socio")
+                {
+                    //hacemos un message box que el registro de no socio no esta implementado
+                    MessageBox.Show("El registro de No Socio no está implementado en esta versión.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
             //luego se cierra el form
 
@@ -63,6 +77,11 @@ namespace MenuPrincipalClub.Forms
         {
             //cerramos el form
             frmRegistrarSocio.ActiveForm.Close();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

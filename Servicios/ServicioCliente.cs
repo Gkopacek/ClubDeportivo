@@ -34,7 +34,7 @@ public class ServicioCliente
                 {
                     listaUsuarios.Add(new Socio
                     {
-                        Id = lector.GetInt32(0),
+                        
                         Nombre = lector.GetString(1),
                         Estado = Enum.TryParse(lector.GetString(4), ignoreCase: true, out Estado estado)
                             ? estado
@@ -65,7 +65,7 @@ public class ServicioCliente
                     {
                         usuario = new Socio
                         {
-                            Id = lector.GetInt32(0),
+                            
                             Nombre = lector.GetString(1),
                             Documento = lector.GetString(2),
                             Fecha_Inscripcion = lector.GetDateTime(3),
