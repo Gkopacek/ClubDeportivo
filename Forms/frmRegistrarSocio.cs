@@ -57,7 +57,7 @@ namespace MenuPrincipalClub.Forms
                         Documento = documento,
                         Estado = Estado.Activo,
                         Fecha_Inscripcion = DateTime.Now,
-                        Tipo = Tipo.Socio, // Asignamos el tipo de socio
+                        Tipo = "socio", // Asignamos el tipo de socio
                         Apto_Fisico = checkBox1.Checked // Asignamos si presentó apto físico
                     };
                     servicioCliente.InsertarUsuario(nuevoUsuario); // Asegúrate de que este método exista en ServicioCliente
@@ -67,9 +67,23 @@ namespace MenuPrincipalClub.Forms
 
                 if (comboBox1.Text == "No Socio")
                 {
-                    //hacemos un message box que el registro de no socio no esta implementado
-                    MessageBox.Show("El registro de No Socio no está implementado en esta versión.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Hacemos registro de no socio
+                    var nuevoNoSocio = new NoSocio
+                    {
+                        Nombre = textBox2.Text.Trim(),
+                        Documento = documento,
+                        Estado = Estado.Activo,
+                        Fecha_Inscripcion = DateTime.Now,
+                        Tipo = "no socio", // Asignamos el tipo de No Socio
+                        Apto_Fisico = false // No aplica para No Socio
+
+
+                    };
+                    //insertamos el no socio
+                    servicioCliente.InsertarNoSocio(nuevoNoSocio); // Asegúrate de que este método exista en ServicioCliente
+                    frmRegistrarSocio.ActiveForm.Close(); // Cerramos el formulario después de registrar al No Socio
                 }
+                
 
             }
             //luego se cierra el form
