@@ -22,6 +22,18 @@ namespace MenuPrincipalClub.Forms
             textBox3.Enabled = false;
         }
 
+
+        public frmRegistrarPago(string nombre, string documento)
+        {
+            InitializeComponent();
+            //ponemos el nombre y el documento en los textBox
+            textBox3.Text = nombre;
+            textBox2.Text = documento;
+            //ponemos disables el textBox3
+            textBox3.Enabled = false;
+            textBox2.Enabled = false; // Deshabilitamos el textBox2 para que no se pueda modificar el documento una vez ingresado
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             //cerramos el formulario
@@ -99,6 +111,10 @@ namespace MenuPrincipalClub.Forms
                 textBox3.Clear();
                 textBox1.Clear();
                 comboBox1.SelectedIndex = -1; // Reseteamos el comboBox
+
+
+                //cerramos el formulario
+                this.Close();
             }
 
         }

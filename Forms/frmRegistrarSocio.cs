@@ -60,7 +60,20 @@ namespace MenuPrincipalClub.Forms
                         Tipo = "socio", // Asignamos el tipo de socio
                         Apto_Fisico = checkBox1.Checked // Asignamos si presentó apto físico
                     };
-                    servicioCliente.InsertarUsuario(nuevoUsuario); // Asegúrate de que este método exista en ServicioCliente
+                    servicioCliente.InsertarUsuario(nuevoUsuario);// Asegúrate de que este método exista en ServicioCliente
+                    //luego si entrego apto fisico le mostramos un cartel con un boton que diga imprimir carnet
+                    if (checkBox1.Checked)
+                    {
+                        MessageBox.Show("Socio registrado exitosamente. Por favor, imprima su carnet.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Socio registrado exitosamente. Recuerde presentar el apto físico en su próxima visita.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    //se abre un modal con los datos del socio y si tiene el apto fisico hay un boton que dice imprimir carnet sin funcionalidad implementada
+                    // Aquí podrías abrir un formulario modal para mostrar los datos del socio
+
+
 
                     frmRegistrarSocio.ActiveForm.Close();
                 }
@@ -81,6 +94,16 @@ namespace MenuPrincipalClub.Forms
                     };
                     //insertamos el no socio
                     servicioCliente.InsertarNoSocio(nuevoNoSocio); // Asegúrate de que este método exista en ServicioCliente
+                    // el socio tiene que realizar el pago en el momento por lo que abre el modal de Registrar pago con el documento del no socio
+                    MessageBox.Show("No Socio registrado exitosamente. Por favor, realice el pago correspondiente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Aquí podrías abrir un formulario modal para registrar el pago del No Socio
+                    frmRegistrarPago frmRegistrarPago = new frmRegistrarPago(nuevoNoSocio.Nombre,nuevoNoSocio.Documento);
+                    frmRegistrarPago.ShowDialog(); // Mostramos el formulario modal para registrar el pago
+                    // Luego de registrar el pago, cerramos el formulario de registro de No Socio
+                    //frmRegistrarPago.ActiveForm.Close(); // Esto no es necesario ya que el formulario se cierra al finalizar el diálogo
+                    MessageBox.Show("Pago registrado exitosamente. Gracias por su colaboración.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
                     frmRegistrarSocio.ActiveForm.Close(); // Cerramos el formulario después de registrar al No Socio
                 }
                 
