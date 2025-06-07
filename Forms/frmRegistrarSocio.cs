@@ -55,7 +55,7 @@ namespace MenuPrincipalClub.Forms
                     {
                         Nombre = textBox2.Text.Trim(),
                         Documento = documento,
-                        Estado = Estado.Activo,
+                        Estado = Estado.Inactivo,
                         Fecha_Inscripcion = DateTime.Now,
                         Tipo = "socio", // Asignamos el tipo de socio
                         Apto_Fisico = checkBox1.Checked // Asignamos si presentó apto físico
@@ -73,6 +73,20 @@ namespace MenuPrincipalClub.Forms
                     //se abre un modal con los datos del socio y si tiene el apto fisico hay un boton que dice imprimir carnet sin funcionalidad implementada
                     // Aquí podrías abrir un formulario modal para mostrar los datos del socio
 
+                    //consultamos si quiere realizar el pago ahora primero mediante un mensaje
+                    var resultado = MessageBox.Show("¿Desea realizar el pago ahora?", "Pago de Socio", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (resultado == DialogResult.Yes)
+                    {
+                        // Si el usuario acepta, abrimos el formulario de registro de pago
+                        frmRegistrarPago frmRegistrarPago = new frmRegistrarPago(nuevoUsuario.Nombre, nuevoUsuario.Documento);
+                        frmRegistrarPago.ShowDialog(); // Mostramos el formulario modal para registrar el pago
+                        // Luego de registrar el pago, cerramos el formulario de registro de Socio
+                        MessageBox.Show("Pago registrado exitosamente. Gracias por su colaboración.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Puede realizar el pago en cualquier momento. Gracias por registrarse.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
 
 
                     frmRegistrarSocio.ActiveForm.Close();
