@@ -30,26 +30,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
             label1 = new Label();
             dataGridView1 = new DataGridView();
+            button1 = new Button();
             button2 = new Button();
+            button5 = new Button();
             button4 = new Button();
             button3 = new Button();
-            button5 = new Button();
             btnRegistrarCliente = new Button();
+            lblUsuario = new Label();
+            lblRol = new Label();
+            lblInfoUsuario = new Label();
+            lblInfoRol = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // button1
-            // 
-            button1.Location = new Point(92, 82);
-            button1.Name = "button1";
-            button1.Size = new Size(173, 59);
-            button1.TabIndex = 0;
-            button1.Text = "Mostrar Afiliados";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // label1
             // 
@@ -70,15 +64,35 @@
             dataGridView1.TabIndex = 2;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
+            // button1
+            // 
+            button1.Location = new Point(92, 82);
+            button1.Name = "button1";
+            button1.Size = new Size(173, 59);
+            button1.TabIndex = 0;
+            button1.Text = "Mostrar Afiliados";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // button2
             // 
-            button2.Location = new Point(617, 179);
+            button2.Location = new Point(313, 82);
             button2.Name = "button2";
             button2.Size = new Size(171, 59);
             button2.TabIndex = 3;
             button2.Text = "Registrar Socio";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(528, 82);
+            button5.Name = "button5";
+            button5.Size = new Size(146, 61);
+            button5.TabIndex = 7;
+            button5.Text = "Realizar Pago";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // button4
             // 
@@ -100,31 +114,61 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click_1;
             // 
-            // button5
-            // 
-            button5.Location = new Point(313, 80);
-            button5.Name = "button5";
-            button5.Size = new Size(171, 61);
-            button5.TabIndex = 7;
-            button5.Text = "Registrar Socio";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
-            // 
             // btnRegistrarCliente
             // 
-            btnRegistrarCliente.Location = new Point(536, 82);
+            btnRegistrarCliente.Location = new Point(528, 179);
             btnRegistrarCliente.Name = "btnRegistrarCliente";
-            btnRegistrarCliente.Size = new Size(171, 61);
+            btnRegistrarCliente.Size = new Size(146, 59);
             btnRegistrarCliente.TabIndex = 8;
             btnRegistrarCliente.Text = "Registrar Cliente";
             btnRegistrarCliente.UseVisualStyleBackColor = true;
             btnRegistrarCliente.Click += btnRegistrarCliente_Click;
+            // 
+            // lblUsuario
+            // 
+            lblUsuario.AutoSize = true;
+            lblUsuario.Location = new Point(28, 19);
+            lblUsuario.Name = "lblUsuario";
+            lblUsuario.Size = new Size(50, 15);
+            lblUsuario.TabIndex = 9;
+            lblUsuario.Text = "Usuario:";
+            // 
+            // lblRol
+            // 
+            lblRol.AutoSize = true;
+            lblRol.Location = new Point(28, 43);
+            lblRol.Name = "lblRol";
+            lblRol.Size = new Size(27, 15);
+            lblRol.TabIndex = 10;
+            lblRol.Text = "Rol:";
+            // 
+            // lblInfoUsuario
+            // 
+            lblInfoUsuario.AutoSize = true;
+            lblInfoUsuario.Location = new Point(83, 19);
+            lblInfoUsuario.Name = "lblInfoUsuario";
+            lblInfoUsuario.Size = new Size(16, 15);
+            lblInfoUsuario.TabIndex = 11;
+            lblInfoUsuario.Text = "...";
+            // 
+            // lblInfoRol
+            // 
+            lblInfoRol.AutoSize = true;
+            lblInfoRol.Location = new Point(61, 43);
+            lblInfoRol.Name = "lblInfoRol";
+            lblInfoRol.Size = new Size(16, 15);
+            lblInfoRol.TabIndex = 12;
+            lblInfoRol.Text = "...";
             // 
             // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblInfoRol);
+            Controls.Add(lblInfoUsuario);
+            Controls.Add(lblRol);
+            Controls.Add(lblUsuario);
             Controls.Add(btnRegistrarCliente);
             Controls.Add(button5);
             Controls.Add(button3);
@@ -142,14 +186,17 @@
         }
 
         #endregion
-
-        private Button button1;
         private Label label1;
         public DataGridView dataGridView1;
+        private Button button1;
         private Button button2;
+        private Button button5;
         private Button button4;
         private Button button3;
-        private Button button5;
         private Button btnRegistrarCliente;
+        private Label lblUsuario;
+        private Label lblRol;
+        private Label lblInfoUsuario;
+        private Label lblInfoRol;
     }
 }

@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `club_deportivo` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `club_deportivo`;
--- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.42, for Win64 (x86_64)
 --
--- Host: localhost    Database: club_deportivo
+-- Host: 127.0.0.1    Database: club_deportivo
 -- ------------------------------------------------------
--- Server version	8.0.41
+-- Server version	8.0.42
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,6 +18,38 @@ USE `club_deportivo`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `clientes`
+--
+
+DROP TABLE IF EXISTS `clientes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `clientes` (
+  `NCliente` int NOT NULL AUTO_INCREMENT,
+  `Nombre` varchar(50) NOT NULL,
+  `Apellido` varchar(50) NOT NULL,
+  `Documento` varchar(20) NOT NULL,
+  `Email` varchar(100) DEFAULT NULL,
+  `Telefono` varchar(20) DEFAULT NULL,
+  `FechaRegistro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`NCliente`),
+  UNIQUE KEY `uk_cliente_documento` (`Documento`),
+  CONSTRAINT `clientes_chk_1` CHECK ((char_length(`nombre`) > 4)),
+  CONSTRAINT `clientes_chk_2` CHECK ((char_length(`documento`) > 4))
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `clientes`
+--
+
+LOCK TABLES `clientes` WRITE;
+/*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
+INSERT INTO `clientes` VALUES (1,'Juani','Pérez','1234567890','juan.perez@example.com','555-1234','2025-06-01 23:03:20'),(3,'pepito','elPistolero','987654321','elpepito@gmial.com','1523456789','2025-06-01 23:22:09');
+/*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `pagos`
 --
 
@@ -26,13 +58,13 @@ DROP TABLE IF EXISTS `pagos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pagos` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `documento` varchar(20) NOT NULL,
+  `Nsocio` int DEFAULT NULL,
   `fecha_pago` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `monto` decimal(10,2) NOT NULL,
   `metodo_pago` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `documento` (`documento`),
-  CONSTRAINT `pagos_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `socios` (`documento`)
+  KEY `pagos_ibfk_1` (`Nsocio`),
+  CONSTRAINT `pagos_ibfk_1` FOREIGN KEY (`Nsocio`) REFERENCES `socios` (`Nsocio`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -42,7 +74,7 @@ CREATE TABLE `pagos` (
 
 LOCK TABLES `pagos` WRITE;
 /*!40000 ALTER TABLE `pagos` DISABLE KEYS */;
-INSERT INTO `pagos` VALUES (6,'3333333333','2025-05-31 13:29:09',1000000.00,'Efectivo'),(7,'123456789','2025-05-31 13:33:46',2222.00,'Efectivo');
+INSERT INTO `pagos` VALUES (6,2147483647,'2025-05-31 13:29:09',1000000.00,'Efectivo'),(7,123456789,'2025-05-31 13:33:46',2222.00,'Efectivo');
 /*!40000 ALTER TABLE `pagos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,15 +110,13 @@ DROP TABLE IF EXISTS `socios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `socios` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) NOT NULL,
-  `documento` varchar(20) NOT NULL,
+  `Nsocio` int NOT NULL AUTO_INCREMENT,
+  `Ncliente` int DEFAULT NULL,
   `fecha_inscripcion` date NOT NULL,
   `estado` enum('activo','inactivo') DEFAULT 'activo',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `documento` (`documento`),
-  CONSTRAINT `socios_chk_1` CHECK ((char_length(`nombre`) > 4)),
-  CONSTRAINT `socios_chk_2` CHECK ((char_length(`documento`) > 4))
+  PRIMARY KEY (`Nsocio`),
+  KEY `fk_socios` (`Ncliente`),
+  CONSTRAINT `fk_socios` FOREIGN KEY (`Ncliente`) REFERENCES `clientes` (`NCliente`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -96,7 +126,6 @@ CREATE TABLE `socios` (
 
 LOCK TABLES `socios` WRITE;
 /*!40000 ALTER TABLE `socios` DISABLE KEYS */;
-INSERT INTO `socios` VALUES (1,'Juan Pérez','12345678','2023-01-15','inactivo'),(2,'María González','87654321','2024-03-10','inactivo'),(3,'Carlos López','23456789','2022-07-25','inactivo'),(4,'Ana Rodríguez','34567890','2025-01-01','inactivo'),(5,'Pedro Ramírez','56789012','2023-09-30','inactivo'),(13,'franquito','333333333','2025-05-28','inactivo'),(15,'Franquito lala','123456789','2025-05-28','activo'),(16,'AAAAAAAAAAAA','1111111111','2025-05-31','inactivo'),(17,'BBBBBBBBBBBBB','2222222222','2025-05-31','inactivo'),(18,'CCCCCCCCCCCCCCCC','3333333333','2025-05-31','inactivo'),(19,'DDDDDDDDDDDD','2131321','2025-05-31','activo');
 /*!40000 ALTER TABLE `socios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,6 +236,34 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `BuscarClientePorDocumento` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `BuscarClientePorDocumento`(
+    IN p_documento VARCHAR(20)
+)
+BEGIN
+    SELECT 
+        Nombre,
+        Apellido,
+        Documento,
+        Email,
+        Telefono
+    FROM Clientes
+    WHERE Documento = p_documento;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `BuscarSocioPorDocumento` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -260,6 +317,44 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `IngresoLogin`(IN `Usu` VARCHAR(50), IN `Pass` VARCHAR(50))
 BEGIN
     SELECT * FROM usuarios WHERE usuario = Usu AND contraseña = Pass;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `InsertarCliente` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarCliente`(
+    IN pNombre VARCHAR(50),
+    IN pApellido VARCHAR(50),
+    IN pDocumento VARCHAR(20),
+    IN pEmail VARCHAR(100),
+    IN pTelefono VARCHAR(20)
+)
+BEGIN
+    INSERT INTO clientes (
+        Nombre,
+        Apellido,
+        Documento,
+        Email,
+        Telefono
+    )
+    VALUES (
+        pNombre,
+        pApellido,
+        pDocumento,
+        pEmail,
+        pTelefono
+    );
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -340,4 +435,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-31 16:08:25
+-- Dump completed on 2025-06-08 13:01:48

@@ -23,6 +23,8 @@ namespace MenuPrincipalClub
         public frmPrincipal()
         {
             InitializeComponent();
+            lblInfoUsuario.Text = usuario;
+            lblInfoRol.Text = rol;
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -44,11 +46,11 @@ namespace MenuPrincipalClub
         {
             // Conexion conexion = Conexion.getInstancia();
             // Conecto conecto = new Conecto("Server=localhost;Database=club_deportivo;User ID=root;Password=root;SslMode=Required;AllowPublicKeyRetrieval=False");
-            ServicioCliente ServicioCliente = new ServicioCliente();
+            ServicioSocio ServicioSocio = new ServicioSocio();
 
 
-            // Obtener la lista de usuarios
-            List<Socio> usuarios = ServicioCliente.ObtenerUsuarios();
+            // Obtener la lista de socios
+            List<Socio> usuarios = ServicioSocio.ObtenerSocios();
             // Verificar si la lista de usuarios no es nula
             if (usuarios != null)
             {
@@ -85,13 +87,13 @@ namespace MenuPrincipalClub
         private void button3_Click_1(object sender, EventArgs e)
         {
             // llamos al service y actualizamos lista de deudores en la db
-            ServicioCliente servicioCliente = new ServicioCliente();
-            servicioCliente.ActualizarDeudores();
+            ServicioSocio servicioSocio = new ServicioSocio();
+            servicioSocio.ActualizarDeudores();
             //avisamos que la lista de deudores fue actualizada
             MessageBox.Show("Lista de deudores actualizada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //traemos los socios a una lista
-            List<Socio> usuarios = servicioCliente.ObtenerUsuarios();
+            List<Socio> usuarios = servicioSocio.ObtenerSocios();
             // y mostamos en el datagridview los que tienen estado inactivo 
             if (usuarios != null)
             {
@@ -118,13 +120,13 @@ namespace MenuPrincipalClub
 
             //verificamos si existe el dni en la db
 
-            ServicioCliente servicioCliente = new ServicioCliente();
+            ServicioSocio servicioCliente = new ServicioSocio();
             //Usuario? usuario = servicioCliente.ObtenerUsuarioPorDocumento();
 
             //si existe abrimos el formulario para registrar pago
             if (usuario != null)
             {
-                frmRegistrarSocio frmRegistrarPago = new frmRegistrarSocio();
+                frmRegistrarPago frmRegistrarPago = new frmRegistrarPago();
                 frmRegistrarPago.Show();
             }
             else
@@ -142,6 +144,11 @@ namespace MenuPrincipalClub
         {
             frmRegistrarCliente frmRegistrarCliente = new frmRegistrarCliente();
             frmRegistrarCliente.Show();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
