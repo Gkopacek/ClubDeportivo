@@ -22,6 +22,9 @@ namespace MenuPrincipalClub.Forms
         {
             InitializeComponent();
 
+            cboTipo.Items.Add("Efectivo");
+            cboTipo.Items.Add("Tarjeta");
+
             // Guardar el tamaño original al inicio para poder restaurarlo después
             originalSize = this.Size;
 
@@ -86,15 +89,19 @@ namespace MenuPrincipalClub.Forms
             {
 
                 // Tamaño cuando está seleccionado
-                this.Size = new Size(416, 468); // Modifica estos valores según tus necesidades
-                MessageBox.Show("Casilla seleccionada. Formulario ampliado.");
+                Decimal ValorCuota = Utils.ObtenerValorCuota();
+                txtMonto.Text = ValorCuota.ToString();
+                this.Size = new Size(416, 475); // Modifica estos valores según tus necesidades
+                
 
             }
             else
             {
+                txtMonto.Clear();
                 // Restaurar tamaño original cuando se desmarca
                 this.Size = originalSize;
-                MessageBox.Show("Casilla no seleccionada. Formulario restablecido.");
+                
+                
             }
         }
 

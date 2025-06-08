@@ -214,7 +214,7 @@ namespace MenuPrincipalClub.Servicios
         }
 
         // registramos pago a la db
-        public bool RegistrarPago(Pago pago)
+        public bool RegistrarPago(PagoCuota pago)
         {
             bool exito = false;
             MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();

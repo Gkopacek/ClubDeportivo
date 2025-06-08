@@ -81,7 +81,7 @@ namespace MenuPrincipalClub.Forms
             {
 
                 // Creamos una instancia de Pago con los datos ingresados
-                Pago nuevoPago = new Pago
+                PagoCuota nuevoPago = new PagoCuota
                 {
                     Documento = textBox2.Text,
                     Fecha = DateTime.Now, // Asignamos la fecha actual

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MenuPrincipalClub.Entidades
 {
-    public class Pago
+    public class PagoCuota
 
     {
 
@@ -15,14 +15,22 @@ namespace MenuPrincipalClub.Entidades
         public DateTime Fecha { get; set; }
         public decimal Monto { get; set; }
         public string MetodoPago { get; set; }
-        public Pago(string documento, DateTime fecha, decimal monto, string metodoPago)
-        {
+        public int Cantidad_meses { get; set; }
+        public DateTime? Fecha_vencimiento { get; set; }
+
+        public PagoCuota(string documento, DateTime fecha, decimal ValorCuota, int cantidadMeses, decimal monto, string metodoPago)
+        {    
+
             Documento = documento;
             Fecha = fecha;
+            Cantidad_meses = cantidadMeses;
             Monto = monto;
             MetodoPago = metodoPago;
+
         }
-        public Pago() // Constructor por defecto
+
+
+        public PagoCuota() // Constructor por defecto
         {
             Documento = string.Empty;
             Fecha = DateTime.Now;

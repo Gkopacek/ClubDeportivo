@@ -45,10 +45,12 @@
             lblMonto = new Label();
             label1 = new Label();
             chkentregoApto = new CheckBox();
-            txtTipo = new TextBox();
-            txtMonto = new TextBox();
             lblcantidad = new Label();
             btnLimpiar = new Button();
+            coCantMeses = new ComboBox();
+            label2 = new Label();
+            cboTipo = new ComboBox();
+            txtMonto = new TextBox();
             SuspendLayout();
             // 
             // lblNombre
@@ -154,7 +156,7 @@
             // 
             // btnRegistrarSocio
             // 
-            btnRegistrarSocio.Location = new Point(268, 358);
+            btnRegistrarSocio.Location = new Point(268, 374);
             btnRegistrarSocio.Name = "btnRegistrarSocio";
             btnRegistrarSocio.Size = new Size(106, 48);
             btnRegistrarSocio.TabIndex = 12;
@@ -165,7 +167,7 @@
             // lblTipo
             // 
             lblTipo.AutoSize = true;
-            lblTipo.Location = new Point(70, 343);
+            lblTipo.Location = new Point(86, 384);
             lblTipo.Name = "lblTipo";
             lblTipo.Size = new Size(30, 15);
             lblTipo.TabIndex = 13;
@@ -196,28 +198,14 @@
             chkentregoApto.Text = "Apto Entregado";
             chkentregoApto.UseVisualStyleBackColor = true;
             // 
-            // txtTipo
-            // 
-            txtTipo.Location = new Point(135, 340);
-            txtTipo.Name = "txtTipo";
-            txtTipo.Size = new Size(100, 23);
-            txtTipo.TabIndex = 1;
-            // 
-            // txtMonto
-            // 
-            txtMonto.Location = new Point(135, 383);
-            txtMonto.Name = "txtMonto";
-            txtMonto.Size = new Size(100, 23);
-            txtMonto.TabIndex = 0;
-            // 
             // lblcantidad
             // 
             lblcantidad.AutoSize = true;
-            lblcantidad.Location = new Point(70, 386);
+            lblcantidad.Location = new Point(70, 416);
             lblcantidad.Name = "lblcantidad";
-            lblcantidad.Size = new Size(43, 15);
+            lblcantidad.Size = new Size(46, 15);
             lblcantidad.TabIndex = 22;
-            lblcantidad.Text = "Monto";
+            lblcantidad.Text = "Monto:";
             // 
             // btnLimpiar
             // 
@@ -229,15 +217,49 @@
             btnLimpiar.UseVisualStyleBackColor = true;
             btnLimpiar.Click += btnLimpiar_Click;
             // 
+            // coCantMeses
+            // 
+            coCantMeses.FormattingEnabled = true;
+            coCantMeses.Location = new Point(135, 352);
+            coCantMeses.Name = "coCantMeses";
+            coCantMeses.Size = new Size(100, 23);
+            coCantMeses.TabIndex = 25;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(22, 355);
+            label2.Name = "label2";
+            label2.Size = new Size(107, 15);
+            label2.TabIndex = 26;
+            label2.Text = "Cantidad de Meses";
+            // 
+            // cboTipo
+            // 
+            cboTipo.FormattingEnabled = true;
+            cboTipo.Location = new Point(135, 381);
+            cboTipo.Name = "cboTipo";
+            cboTipo.Size = new Size(99, 23);
+            cboTipo.TabIndex = 27;
+            // 
+            // txtMonto
+            // 
+            txtMonto.Location = new Point(134, 413);
+            txtMonto.Name = "txtMonto";
+            txtMonto.Size = new Size(100, 23);
+            txtMonto.TabIndex = 28;
+            // 
             // frmRegistrarCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(407, 285);
+            ClientSize = new Size(407, 324);
+            Controls.Add(txtMonto);
+            Controls.Add(cboTipo);
+            Controls.Add(label2);
+            Controls.Add(coCantMeses);
             Controls.Add(btnLimpiar);
             Controls.Add(lblcantidad);
-            Controls.Add(txtMonto);
-            Controls.Add(txtTipo);
             Controls.Add(chkentregoApto);
             Controls.Add(label1);
             Controls.Add(lblMonto);
@@ -280,10 +302,12 @@
         private Label lblMonto;
         private Label label1;
         private CheckBox chkentregoApto;
-        private TextBox txtTipo;
-        private TextBox txtMonto;
         private Label lblcantidad;
         private Button btnLimpiar;
+        private ComboBox coCantMeses;
+        private Label label2;
+        private ComboBox cboTipo;
+        private TextBox txtMonto;
         // private CheckBox chkAptoEntregado;
     }
 }
