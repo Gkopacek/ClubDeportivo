@@ -47,7 +47,7 @@
             chkentregoApto = new CheckBox();
             lblcantidad = new Label();
             btnLimpiar = new Button();
-            coCantMeses = new ComboBox();
+            cboCantMeses = new ComboBox();
             label2 = new Label();
             cboTipo = new ComboBox();
             txtMonto = new TextBox();
@@ -217,13 +217,15 @@
             btnLimpiar.UseVisualStyleBackColor = true;
             btnLimpiar.Click += btnLimpiar_Click;
             // 
-            // coCantMeses
+            // cboCantMeses
             // 
-            coCantMeses.FormattingEnabled = true;
-            coCantMeses.Location = new Point(135, 352);
-            coCantMeses.Name = "coCantMeses";
-            coCantMeses.Size = new Size(100, 23);
-            coCantMeses.TabIndex = 25;
+            cboCantMeses.FormattingEnabled = true;
+            cboCantMeses.Location = new Point(135, 352);
+            cboCantMeses.Name = "cboCantMeses";
+            cboCantMeses.Size = new Size(100, 23);
+            cboCantMeses.TabIndex = 25;
+            cboCantMeses.SelectedIndexChanged += cboCantMeses_SelectedIndexChanged;
+            cboCantMeses.MouseClick += cboCantMeses_MouseClick;
             // 
             // label2
             // 
@@ -253,11 +255,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(407, 324);
+            ClientSize = new Size(407, 323);
             Controls.Add(txtMonto);
             Controls.Add(cboTipo);
             Controls.Add(label2);
-            Controls.Add(coCantMeses);
+            Controls.Add(cboCantMeses);
             Controls.Add(btnLimpiar);
             Controls.Add(lblcantidad);
             Controls.Add(chkentregoApto);
@@ -304,7 +306,7 @@
         private CheckBox chkentregoApto;
         private Label lblcantidad;
         private Button btnLimpiar;
-        private ComboBox coCantMeses;
+        private ComboBox cboCantMeses;
         private Label label2;
         private ComboBox cboTipo;
         private TextBox txtMonto;

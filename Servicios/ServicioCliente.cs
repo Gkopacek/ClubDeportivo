@@ -13,6 +13,43 @@ namespace MenuPrincipalClub.Servicios
 public class ServicioCliente
     {
 
+/*
+public List<Cliente> ObtenerClientes()
+        {
+            var listaUsuarios = new List<Cliente>();
+
+            // Ensure the Conexion class has a static method getInstancia() that returns an instance of Conexion
+            // If it doesn't exist, you need to implement it in the Conexion class.
+            var conexionInstancia = Conexion.getInstancia(); // Ensure this method exists in Conexion class
+            MySqlConnection sqlCon = conexionInstancia.CrearConexion();
+
+            MySqlCommand comando = new MySqlCommand("ObtenerSocios", sqlCon)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            sqlCon.Open();
+            using (var lector = comando.ExecuteReader())
+            {
+                while (lector.Read())
+                {
+                    listaUsuarios.Add(new Socio
+                    {
+                        Nsocio = lector.GetInt32(0),
+                        Nombre = lector.GetString(1),
+                        Estado = Enum.TryParse(lector.GetString(4), ignoreCase: true, out Estado estado)
+                            ? estado
+                            : Estado.Inactivo,
+                        Fecha_Inscripcion = lector.GetDateTime(3),
+                        Documento = lector.GetString(2)
+                    });
+                }
+            }
+
+            return listaUsuarios;
+        }
+
+*/
         public Cliente ObtenerClientePorDocumento(string documento)
 {
     Cliente cliente = null;
@@ -27,7 +64,7 @@ public class ServicioCliente
         {
                     if (lector.Read())
                     {
-                        cliente = new Cliente(
+                            cliente = new Cliente(
                             lector.GetString(0), // Nombre
                             lector.GetString(1), // Apellido
                             lector.GetString(2), // Documento
@@ -112,6 +149,21 @@ public class ServicioCliente
             return System.Text.RegularExpressions.Regex.IsMatch(email, pattern);
         }
 
+        public bool RegistrarPagoActividad(PagoActividad pago)
+        {
+
+            bool exito = false;
+            MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
+            MySqlCommand comando = new MySqlCommand(@"INSERT INTO pagos_actividades (idActividad, Ncliente, Metodo_pago, fecha_pago)
+                         VALUES (@pago.idActividad, @pago.NCliente, @pago.metodoPago, @pago.fechaPago);", sqlCon);
+            {
+                
+                sqlCon.Open();
+                int filasAfectadas = comando.ExecuteNonQuery();
+                exito = filasAfectadas > 0;
+            }
+            return exito;
+        }
 
 
 

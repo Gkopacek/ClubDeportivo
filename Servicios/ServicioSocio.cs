@@ -222,7 +222,6 @@ namespace MenuPrincipalClub.Servicios
             {
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.AddWithValue("@p_documento", pago.Documento);
-                //comando.Parameters.AddWithValue("@fecha", pago.Fecha);
                 comando.Parameters.AddWithValue("@p_monto", pago.Monto);
                 comando.Parameters.AddWithValue("@p_metodo_pago", pago.MetodoPago);
                 sqlCon.Open();

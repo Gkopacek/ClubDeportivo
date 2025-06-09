@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MenuPrincipalClub.Entidades;
 using MenuPrincipalClub.Servicios;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace MenuPrincipalClub.Forms
@@ -24,6 +25,12 @@ namespace MenuPrincipalClub.Forms
 
             cboTipo.Items.Add("Efectivo");
             cboTipo.Items.Add("Tarjeta");
+
+            //comboBox1.Items.AddRange(new string[] { "Elemento 1", "Elemento 2", "Elemento 3" });
+
+            cboCantMeses.Items.AddRange(new string[] { "1", "2", "3", "4", "5", "6", "12" });
+
+
 
             // Guardar el tamaño original al inicio para poder restaurarlo después
             originalSize = this.Size;
@@ -92,7 +99,7 @@ namespace MenuPrincipalClub.Forms
                 Decimal ValorCuota = Utils.ObtenerValorCuota();
                 txtMonto.Text = ValorCuota.ToString();
                 this.Size = new Size(416, 475); // Modifica estos valores según tus necesidades
-                
+
 
             }
             else
@@ -100,14 +107,67 @@ namespace MenuPrincipalClub.Forms
                 txtMonto.Clear();
                 // Restaurar tamaño original cuando se desmarca
                 this.Size = originalSize;
-                
-                
+
+
             }
         }
 
         private void btnRegistrarSocio_Click(object sender, EventArgs e)
         {
+            if (cboTipo.SelectedItem !=null && cboCantMeses.SelectedItem != null )
+            {
+                Decimal total = 0;
 
+                Decimal ValorCuota = Utils.ObtenerValorCuota();
+
+
+                string seleccionado = cboCantMeses.SelectedItem.ToString();
+
+                switch (seleccionado)
+                {
+                    case "3":
+                        if (cboTipo.SelectedItem == "Tarjeta")
+                        {
+                            MessageBox.Show("Se aplicara descuento del 10%");
+                            total = ValorCuota * (Decimal)0.9;
+
+                        }
+                        else
+                        {
+                            total = Decimal.Parse(seleccionado) * ValorCuota;
+                        }
+                        break;
+
+                    case "6":
+                        if (cboTipo.SelectedItem == "Tarjeta")
+                        {
+                            MessageBox.Show("Se aplicara descuento del 15%");
+                            total = ValorCuota * (Decimal)0.85;
+                            break;
+                        }
+                        else
+                        {
+                            total = Decimal.Parse(seleccionado) * ValorCuota;
+                        }
+                        break;
+
+                    default:
+                        total = Decimal.Parse(seleccionado) * ValorCuota;
+                        break;
+                }
+                MessageBox.Show(
+$"Se registro correctamente el nuevo Socio",
+"EXITO");
+            }
+            else
+            {
+                MessageBox.Show(
+                $"debe seleccionar un valor",
+                "ERROR");
+            }
+
+            
+            
         }
 
         private void lblTipo_Click(object sender, EventArgs e)
@@ -122,6 +182,17 @@ namespace MenuPrincipalClub.Forms
             txtDocumento.Clear();
             txtEmail.Clear();
             txtTelefono.Clear();
+        }
+
+        private void cboCantMeses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboCantMeses_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+
         }
     }
 }
