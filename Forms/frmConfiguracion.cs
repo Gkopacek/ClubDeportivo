@@ -18,7 +18,8 @@ namespace MenuPrincipalClub.Forms
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void btnAceptar_Click(object sender, EventArgs e)
         {
             string servidor = txtServidor.Text;
             string puerto = txtPuerto.Text;
@@ -46,7 +47,6 @@ namespace MenuPrincipalClub.Forms
             {
                 MessageBox.Show("Error al configurar la conexión: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
     }
 }

@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            button1 = new Button();
+            lblServidor = new Label();
+            lblPuerto = new Label();
+            lblUsuario = new Label();
+            lblContrasena = new Label();
+            lblBaseDatos = new Label();
+            btnAceptar = new Button();
             txtServidor = new TextBox();
             txtPuerto = new TextBox();
             txtUsuario = new TextBox();
@@ -41,60 +41,60 @@
             txtBaseDatos = new TextBox();
             SuspendLayout();
             // 
-            // label1
+            // lblServidor
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(194, 71);
-            label1.Name = "label1";
-            label1.Size = new Size(50, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Servidor";
+            lblServidor.AutoSize = true;
+            lblServidor.Location = new Point(194, 71);
+            lblServidor.Name = "lblServidor";
+            lblServidor.Size = new Size(50, 15);
+            lblServidor.TabIndex = 0;
+            lblServidor.Text = "Servidor";
             // 
-            // label2
+            // lblPuerto
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(194, 107);
-            label2.Name = "label2";
-            label2.Size = new Size(42, 15);
-            label2.TabIndex = 1;
-            label2.Text = "Puerto";
+            lblPuerto.AutoSize = true;
+            lblPuerto.Location = new Point(194, 107);
+            lblPuerto.Name = "lblPuerto";
+            lblPuerto.Size = new Size(42, 15);
+            lblPuerto.TabIndex = 1;
+            lblPuerto.Text = "Puerto";
             // 
-            // label3
+            // lblUsuario
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(194, 155);
-            label3.Name = "label3";
-            label3.Size = new Size(47, 15);
-            label3.TabIndex = 2;
-            label3.Text = "Usuario";
+            lblUsuario.AutoSize = true;
+            lblUsuario.Location = new Point(194, 155);
+            lblUsuario.Name = "lblUsuario";
+            lblUsuario.Size = new Size(47, 15);
+            lblUsuario.TabIndex = 2;
+            lblUsuario.Text = "Usuario";
             // 
-            // label4
+            // lblContrasena
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(194, 201);
-            label4.Name = "label4";
-            label4.Size = new Size(67, 15);
-            label4.TabIndex = 3;
-            label4.Text = "Contrasena";
+            lblContrasena.AutoSize = true;
+            lblContrasena.Location = new Point(194, 201);
+            lblContrasena.Name = "lblContrasena";
+            lblContrasena.Size = new Size(67, 15);
+            lblContrasena.TabIndex = 3;
+            lblContrasena.Text = "Contrasena";
             // 
-            // label5
+            // lblBaseDatos
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(194, 244);
-            label5.Name = "label5";
-            label5.Size = new Size(64, 15);
-            label5.TabIndex = 4;
-            label5.Text = "Base Datos";
+            lblBaseDatos.AutoSize = true;
+            lblBaseDatos.Location = new Point(194, 244);
+            lblBaseDatos.Name = "lblBaseDatos";
+            lblBaseDatos.Size = new Size(64, 15);
+            lblBaseDatos.TabIndex = 4;
+            lblBaseDatos.Text = "Base Datos";
             // 
-            // button1
+            // btnAceptar
             // 
-            button1.Location = new Point(326, 316);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 5;
-            button1.Text = "Aceptar";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnAceptar.Location = new Point(326, 316);
+            btnAceptar.Name = "btnAceptar";
+            btnAceptar.Size = new Size(75, 23);
+            btnAceptar.TabIndex = 5;
+            btnAceptar.Text = "Aceptar";
+            btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.Click += btnAceptar_Click;
             // 
             // txtServidor
             // 
@@ -141,26 +141,26 @@
             Controls.Add(txtUsuario);
             Controls.Add(txtPuerto);
             Controls.Add(txtServidor);
-            Controls.Add(button1);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(btnAceptar);
+            Controls.Add(lblBaseDatos);
+            Controls.Add(lblContrasena);
+            Controls.Add(lblUsuario);
+            Controls.Add(lblPuerto);
+            Controls.Add(lblServidor);
             Name = "frmConfiguracion";
-            Text = "frmConfiguracion";
+            Text = "Configuracion";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Button button1;
+        private Label lblServidor;
+        private Label lblPuerto;
+        private Label lblUsuario;
+        private Label lblContrasena;
+        private Label lblBaseDatos;
+        private Button btnAceptar;
         private TextBox txtServidor;
         private TextBox txtPuerto;
         private TextBox txtUsuario;
