@@ -18,7 +18,7 @@ namespace MenuPrincipalClub.Datos
 
             try
             {
-                sqlCon = Conexion.getInstancia().CrearConexion();
+                sqlCon = Conexion.CrearConexion();
                 MySqlCommand comando = new MySqlCommand("IngresoLogin", sqlCon);
 
                 comando.CommandType = CommandType.StoredProcedure;

@@ -19,8 +19,8 @@ public class ServicioCliente
 
             // Ensure the Conexion class has a static method getInstancia() that returns an instance of Conexion
             // If it doesn't exist, you need to implement it in the Conexion class.
-            var conexionInstancia = Conexion.getInstancia(); // Ensure this method exists in Conexion class
-            MySqlConnection sqlCon = conexionInstancia.CrearConexion();
+            var conexionInstancia = Conexion.CrearConexion(); // Ensure this method exists in Conexion class
+            MySqlConnection sqlCon = Conexion.CrearConexion();
 
             MySqlCommand comando = new MySqlCommand("BuscarSocios", sqlCon)
             {
@@ -60,7 +60,7 @@ public class ServicioCliente
         public Socio ObtenerUsuarioPorDocumento(string documento)
         {
             Socio usuario = null;
-            MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
+            MySqlConnection sqlCon = Conexion.CrearConexion();
             MySqlCommand comando = new MySqlCommand("BuscarPersonaPorDocumento", sqlCon);
             {
                 comando.CommandType = CommandType.StoredProcedure;
@@ -91,7 +91,7 @@ public class ServicioCliente
        public bool InsertarUsuario(Socio usuario)
         {
             bool exito = false;
-            MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
+            MySqlConnection sqlCon = Conexion.CrearConexion();
             MySqlCommand comando = new MySqlCommand("InsertarPersona", sqlCon);
             {
                 //mostramos un mensaje verificamos nombre y documento que no este vacio
@@ -134,7 +134,7 @@ public class ServicioCliente
         public bool InsertarNoSocio(NoSocio usuario)
         {
             bool exito = false;
-            MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
+            MySqlConnection sqlCon = Conexion.CrearConexion();
             MySqlCommand comando = new MySqlCommand("InsertarPersona", sqlCon);
             {
                 //mostramos un mensaje verificamos nombre y documento que no este vacio
@@ -174,7 +174,7 @@ public class ServicioCliente
         public bool RegistrarPago(Pago pago)
         {
             bool exito = false;
-            MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
+            MySqlConnection sqlCon = Conexion.CrearConexion();
             MySqlCommand comando = new MySqlCommand("RegistrarPago", sqlCon);
             {
                 comando.CommandType = CommandType.StoredProcedure;
@@ -194,7 +194,7 @@ public class ServicioCliente
         public bool ActualizarDeudores()
         {
             bool exito = false;
-            MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion();
+            MySqlConnection sqlCon = Conexion.CrearConexion();
             MySqlCommand comando = new MySqlCommand("ActualizarDeudores", sqlCon);
             {
                 comando.CommandType = CommandType.StoredProcedure;

@@ -7,56 +7,34 @@ using MySql.Data.MySqlClient;
 
 namespace MenuPrincipalClub.Datos
 {
-    public class Conexion
+    public static class Conexion
     {
-        private String nombreDB, svDB, puertoDB, usuario, contrasenia;
-        private static Conexion? con = null;
+        private static string? nombreDB, svDB, puertoDB, usuario, contrasenia;
+        private static bool estaConfigurado = false;
 
-        public Conexion()
+        public static void Configurar(string servidor, string puerto, string usuarioBD, string contrasenaBD, string baseDeDatos)
         {
-            this.nombreDB = "Club_Deportivo_2";
-            this.svDB = "127.0.0.1";
-            this.puertoDB = "3306";
-            this.usuario = "root";
-            this.contrasenia = "";
+            svDB = servidor;
+            puertoDB = puerto;
+            usuario = usuarioBD;
+            contrasenia = contrasenaBD;
+            nombreDB = baseDeDatos;
+            estaConfigurado = true;
         }
 
-        public MySqlConnection CrearConexion()
+        public static MySqlConnection CrearConexion()
         {
-            MySqlConnection? cadena = new MySqlConnection();
+            if (!estaConfigurado)
+                throw new InvalidOperationException("La conexión no fue configurada. Usá Conexion.Configurar(...) antes.");
 
-            try
-            {
-                cadena.ConnectionString = "datasource=" + this.svDB +
-                                          ";port=" + this.puertoDB +
-                                          ";username=" + this.usuario +
-                                          ";password=" + this.contrasenia +
-                                          ";Database=" + this.nombreDB;
-            }
-            catch (Exception ex)
-            {
-                cadena = null;
-                throw;
-            }
+            var cadena = new MySqlConnection();
+
+            cadena.ConnectionString = $"datasource={svDB};port={puertoDB};username={usuario};password={contrasenia};Database={nombreDB}";
+
             return cadena;
         }
-
-        public static Conexion getInstancia()
-        {
-            if (con == null)
-            {
-                con = new Conexion();
-            }
-            return con;
-        }
-
-        public Conexion GetConexion()
-        {
-            return this;
-        }
-
     }
 
-    
+
 }
 
