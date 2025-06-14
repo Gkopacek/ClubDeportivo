@@ -36,7 +36,7 @@ static class Program
         if (configForm.ShowDialog() == DialogResult.OK)
         {
             // Solo abrir el form principal si se configuró
-            Application.Run(new frmPrincipal());
+            Application.Run(new frmLogin());
         }
         else
         {
