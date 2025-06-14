@@ -7,7 +7,7 @@ namespace MenuPrincipalClub
         public frmLogin()
         {
             InitializeComponent();
-            txtPass.UseSystemPasswordChar = true;
+            txtContrasenia.UseSystemPasswordChar = true;
 
 
 
@@ -23,19 +23,13 @@ namespace MenuPrincipalClub
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            txtUsuario.Text = "";
-            txtPass.Text = "";
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             DataTable tablaLogin = new DataTable();
             Datos.CUsuarios dato = new Datos.CUsuarios();
 
 
-            tablaLogin = dato.LogInUsuario(txtUsuario.Text, txtPass.Text);
+            tablaLogin = dato.LogInUsuario(txtUsuario.Text, txtContrasenia.Text);
 
             if (tablaLogin.Rows.Count > 0)
             {
@@ -82,7 +76,7 @@ namespace MenuPrincipalClub
                 Datos.CUsuarios dato = new Datos.CUsuarios();
 
 
-                tablaLogin = dato.LogInUsuario(txtUsuario.Text, txtPass.Text);
+                tablaLogin = dato.LogInUsuario(txtUsuario.Text, txtContrasenia.Text);
 
                 if (tablaLogin.Rows.Count > 0)
                 {
@@ -102,6 +96,12 @@ namespace MenuPrincipalClub
                 }
 
             }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtUsuario.Clear();
+            txtContrasenia.Clear();
         }
     }
 }
