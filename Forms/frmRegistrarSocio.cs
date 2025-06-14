@@ -24,32 +24,6 @@ namespace MenuPrincipalClub.Forms
             chkAptoFisico.Enabled = false; // Deshabilitamos el checkbox de Apto Físico al inicio
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Verificamos si el usuario es "Socio" o "No Socio" si es socio habilitamos el checkbox

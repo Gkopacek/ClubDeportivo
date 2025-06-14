@@ -57,7 +57,6 @@
             lblMenuOpciones.Size = new Size(107, 15);
             lblMenuOpciones.TabIndex = 1;
             lblMenuOpciones.Text = "Menu de Opciones";
-            lblMenuOpciones.Click += lblMenuOpciones_Click;
             // 
             // dbgrdAfiliadosDeudores
             // 
@@ -66,7 +65,6 @@
             dbgrdAfiliadosDeudores.Name = "dbgrdAfiliadosDeudores";
             dbgrdAfiliadosDeudores.Size = new Size(666, 150);
             dbgrdAfiliadosDeudores.TabIndex = 2;
-            dbgrdAfiliadosDeudores.CellContentClick += dbgrdAfiliadosDeudores_CellContentClick;
             // 
             // btnRegistrarPersona
             // 

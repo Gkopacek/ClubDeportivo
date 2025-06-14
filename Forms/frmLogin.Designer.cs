@@ -65,7 +65,6 @@
             lblBienvenida.Size = new Size(155, 15);
             lblBienvenida.TabIndex = 2;
             lblBienvenida.Text = "Bienvenido a club deportivo";
-            lblBienvenida.Click += label1_Click;
             // 
             // lblUsuario
             // 
@@ -84,7 +83,6 @@
             lblContrasenia.Size = new Size(67, 15);
             lblContrasenia.TabIndex = 4;
             lblContrasenia.Text = "Contraseña";
-            lblContrasenia.Click += label3_Click;
             // 
             // txtUsuario
             // 

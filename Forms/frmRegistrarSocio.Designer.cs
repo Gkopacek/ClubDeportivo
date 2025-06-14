@@ -57,7 +57,6 @@
             lblDocumento.Size = new Size(70, 15);
             lblDocumento.TabIndex = 1;
             lblDocumento.Text = "Documento";
-            lblDocumento.Click += label1_Click;
             // 
             // lblNombreYapellido
             // 
@@ -110,7 +109,6 @@
             lblTipo.Size = new Size(31, 15);
             lblTipo.TabIndex = 7;
             lblTipo.Text = "Tipo";
-            lblTipo.Click += label3_Click;
             // 
             // chkAptoFisico
             // 

@@ -119,7 +119,6 @@
             lblNombre.Size = new Size(51, 15);
             lblNombre.TabIndex = 8;
             lblNombre.Text = "Nombre";
-            lblNombre.Click += label4_Click;
             // 
             // txtNombre
             // 

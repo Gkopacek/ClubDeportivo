@@ -123,14 +123,6 @@ namespace MenuPrincipalClub
             }
         }
 
-        private void dbgrdAfiliadosDeudores_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
-
-        private void lblMenuOpciones_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
