@@ -28,63 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            button2 = new Button();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
+            btnIngresar = new Button();
+            btnLimpiar = new Button();
+            lblBienvenida = new Label();
+            lblUsuario = new Label();
+            lblContrasenia = new Label();
             txtUsuario = new TextBox();
-            txtPass = new TextBox();
+            txtContrasenia = new TextBox();
             SuspendLayout();
             // 
-            // button1
+            // btnIngresar
             // 
-            button1.Location = new Point(249, 284);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "Ingresar";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += btnIngresar_Click;
+            btnIngresar.Location = new Point(249, 284);
+            btnIngresar.Name = "btnIngresar";
+            btnIngresar.Size = new Size(75, 23);
+            btnIngresar.TabIndex = 0;
+            btnIngresar.Text = "Ingresar";
+            btnIngresar.UseVisualStyleBackColor = true;
+            btnIngresar.Click += btnIngresar_Click;
             // 
-            // button2
+            // btnLimpiar
             // 
-            button2.Location = new Point(460, 284);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 1;
-            button2.Text = "Limpiar";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btnLimpiar.Location = new Point(460, 284);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(75, 23);
+            btnLimpiar.TabIndex = 1;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
-            // label1
+            // lblBienvenida
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(295, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(155, 15);
-            label1.TabIndex = 2;
-            label1.Text = "Bienvenido a club deportivo";
-            label1.Click += label1_Click;
+            lblBienvenida.AutoSize = true;
+            lblBienvenida.Location = new Point(295, 19);
+            lblBienvenida.Name = "lblBienvenida";
+            lblBienvenida.Size = new Size(155, 15);
+            lblBienvenida.TabIndex = 2;
+            lblBienvenida.Text = "Bienvenido a club deportivo";
             // 
-            // label2
+            // lblUsuario
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(123, 112);
-            label2.Name = "label2";
-            label2.Size = new Size(47, 15);
-            label2.TabIndex = 3;
-            label2.Text = "Usuario";
+            lblUsuario.AutoSize = true;
+            lblUsuario.Location = new Point(123, 112);
+            lblUsuario.Name = "lblUsuario";
+            lblUsuario.Size = new Size(47, 15);
+            lblUsuario.TabIndex = 3;
+            lblUsuario.Text = "Usuario";
             // 
-            // label3
+            // lblContrasenia
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(123, 166);
-            label3.Name = "label3";
-            label3.Size = new Size(67, 15);
-            label3.TabIndex = 4;
-            label3.Text = "Contraseña";
-            label3.Click += label3_Click;
+            lblContrasenia.AutoSize = true;
+            lblContrasenia.Location = new Point(123, 166);
+            lblContrasenia.Name = "lblContrasenia";
+            lblContrasenia.Size = new Size(67, 15);
+            lblContrasenia.TabIndex = 4;
+            lblContrasenia.Text = "Contraseña";
             // 
             // txtUsuario
             // 
@@ -93,39 +91,39 @@
             txtUsuario.Size = new Size(286, 23);
             txtUsuario.TabIndex = 5;
             // 
-            // txtPass
+            // txtContrasenia
             // 
-            txtPass.Location = new Point(249, 163);
-            txtPass.Name = "txtPass";
-            txtPass.Size = new Size(286, 23);
-            txtPass.TabIndex = 6;
+            txtContrasenia.Location = new Point(249, 163);
+            txtContrasenia.Name = "txtContrasenia";
+            txtContrasenia.Size = new Size(286, 23);
+            txtContrasenia.TabIndex = 6;
             // 
-            // frmInicio
+            // frmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(txtPass);
+            Controls.Add(txtContrasenia);
             Controls.Add(txtUsuario);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Name = "frmInicio";
-            Text = "Form1";
+            Controls.Add(lblContrasenia);
+            Controls.Add(lblUsuario);
+            Controls.Add(lblBienvenida);
+            Controls.Add(btnLimpiar);
+            Controls.Add(btnIngresar);
+            Name = "frmLogin";
+            Text = "Login";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
-        private Button button2;
-        private Label label1;
-        private Label label2;
-        private Label label3;
+        private Button btnIngresar;
+        private Button btnLimpiar;
+        private Label lblBienvenida;
+        private Label lblUsuario;
+        private Label lblContrasenia;
         private TextBox txtUsuario;
-        private TextBox txtPass;
+        private TextBox txtContrasenia;
     }
 }

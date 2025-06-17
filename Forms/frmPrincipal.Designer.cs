@@ -30,100 +30,98 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            label1 = new Label();
-            dataGridView1 = new DataGridView();
-            button2 = new Button();
-            button3 = new Button();
-            button5 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            btnMostrarAfiliados = new Button();
+            lblMenuOpciones = new Label();
+            dbgrdAfiliadosDeudores = new DataGridView();
+            btnRegistrarPersona = new Button();
+            btnListaDeudores = new Button();
+            btnRealizarPago = new Button();
+            ((System.ComponentModel.ISupportInitialize)dbgrdAfiliadosDeudores).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // btnMostrarAfiliados
             // 
-            button1.Location = new Point(92, 82);
-            button1.Name = "button1";
-            button1.Size = new Size(173, 59);
-            button1.TabIndex = 0;
-            button1.Text = "Mostrar Afiliados";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnMostrarAfiliados.Location = new Point(92, 82);
+            btnMostrarAfiliados.Name = "btnMostrarAfiliados";
+            btnMostrarAfiliados.Size = new Size(173, 59);
+            btnMostrarAfiliados.TabIndex = 0;
+            btnMostrarAfiliados.Text = "Mostrar Afiliados";
+            btnMostrarAfiliados.UseVisualStyleBackColor = true;
+            btnMostrarAfiliados.Click += btnMostrarAfiliados_Click;
             // 
-            // label1
+            // lblMenuOpciones
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(322, 43);
-            label1.Name = "label1";
-            label1.Size = new Size(107, 15);
-            label1.TabIndex = 1;
-            label1.Text = "Menu de Opciones";
-            label1.Click += label1_Click;
+            lblMenuOpciones.AutoSize = true;
+            lblMenuOpciones.Location = new Point(322, 43);
+            lblMenuOpciones.Name = "lblMenuOpciones";
+            lblMenuOpciones.Size = new Size(107, 15);
+            lblMenuOpciones.TabIndex = 1;
+            lblMenuOpciones.Text = "Menu de Opciones";
             // 
-            // dataGridView1
+            // dbgrdAfiliadosDeudores
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(69, 275);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(666, 150);
-            dataGridView1.TabIndex = 2;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dbgrdAfiliadosDeudores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dbgrdAfiliadosDeudores.Location = new Point(69, 275);
+            dbgrdAfiliadosDeudores.Name = "dbgrdAfiliadosDeudores";
+            dbgrdAfiliadosDeudores.Size = new Size(666, 150);
+            dbgrdAfiliadosDeudores.TabIndex = 2;
             // 
-            // button2
+            // btnRegistrarPersona
             // 
-            button2.Location = new Point(313, 82);
-            button2.Name = "button2";
-            button2.Size = new Size(171, 59);
-            button2.TabIndex = 3;
-            button2.Text = "Resgistrar Persona";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btnRegistrarPersona.Location = new Point(313, 82);
+            btnRegistrarPersona.Name = "btnRegistrarPersona";
+            btnRegistrarPersona.Size = new Size(171, 59);
+            btnRegistrarPersona.TabIndex = 3;
+            btnRegistrarPersona.Text = "Resgistrar Persona";
+            btnRegistrarPersona.UseVisualStyleBackColor = true;
+            btnRegistrarPersona.Click += btnRegistrarPersona_Click;
             // 
-            // button3
+            // btnListaDeudores
             // 
-            button3.Location = new Point(94, 176);
-            button3.Name = "button3";
-            button3.Size = new Size(171, 60);
-            button3.TabIndex = 6;
-            button3.Text = "Lista Deudores";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click_1;
+            btnListaDeudores.Location = new Point(94, 176);
+            btnListaDeudores.Name = "btnListaDeudores";
+            btnListaDeudores.Size = new Size(171, 60);
+            btnListaDeudores.TabIndex = 6;
+            btnListaDeudores.Text = "Lista Deudores";
+            btnListaDeudores.UseVisualStyleBackColor = true;
+            btnListaDeudores.Click += btnListaDeudores_Click_1;
             // 
-            // button5
+            // btnRealizarPago
             // 
-            button5.Location = new Point(313, 175);
-            button5.Name = "button5";
-            button5.Size = new Size(171, 61);
-            button5.TabIndex = 7;
-            button5.Text = "Realizar Pago";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
+            btnRealizarPago.Location = new Point(313, 175);
+            btnRealizarPago.Name = "btnRealizarPago";
+            btnRealizarPago.Size = new Size(171, 61);
+            btnRealizarPago.TabIndex = 7;
+            btnRealizarPago.Text = "Realizar Pago";
+            btnRealizarPago.UseVisualStyleBackColor = true;
+            btnRealizarPago.Click += btnRealizarPago_Click;
             // 
             // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button5);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(dataGridView1);
-            Controls.Add(label1);
-            Controls.Add(button1);
+            Controls.Add(btnRealizarPago);
+            Controls.Add(btnListaDeudores);
+            Controls.Add(btnRegistrarPersona);
+            Controls.Add(dbgrdAfiliadosDeudores);
+            Controls.Add(lblMenuOpciones);
+            Controls.Add(btnMostrarAfiliados);
             Name = "frmPrincipal";
-            Text = "Form2";
+            Text = "Menu Principal";
             Load += Form2_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dbgrdAfiliadosDeudores).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
-        private Label label1;
-        public DataGridView dataGridView1;
-        private Button button2;
-        private Button button3;
-        private Button button5;
+        private Button btnMostrarAfiliados;
+        private Label lblMenuOpciones;
+        public DataGridView dbgrdAfiliadosDeudores;
+        private Button btnRegistrarPersona;
+        private Button btnListaDeudores;
+        private Button btnRealizarPago;
     }
 }

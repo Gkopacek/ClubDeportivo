@@ -19,7 +19,7 @@ namespace MenuPrincipalClub.Forms
             InitializeComponent();
 
             //Ponemos disables el textBox3
-            textBox3.Enabled = false;
+            txtNombre.Enabled = false;
         }
 
 
@@ -27,20 +27,14 @@ namespace MenuPrincipalClub.Forms
         {
             InitializeComponent();
             //ponemos el nombre y el documento en los textBox
-            textBox3.Text = nombre;
-            textBox2.Text = documento;
+            txtNombre.Text = nombre;
+            txtDocumento.Text = documento;
             //ponemos disables el textBox3
-            textBox3.Enabled = false;
-            textBox2.Enabled = false; // Deshabilitamos el textBox2 para que no se pueda modificar el documento una vez ingresado
+            txtNombre.Enabled = false;
+            txtDocumento.Enabled = false; // Deshabilitamos el textBox2 para que no se pueda modificar el documento una vez ingresado
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
-            //cerramos el formulario
-            this.Close();
-        }
-
-        private void label4_Click(object sender, EventArgs e)
         {
 
         }
@@ -50,42 +44,17 @@ namespace MenuPrincipalClub.Forms
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            // verificamos que el documento existe textBox2 en la db
-            if (textBox2.Text == "")
-            {
-                MessageBox.Show("Por favor, ingrese un documento.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                // Aquí deberías implementar la lógica para verificar si el documento existe en la base de datos
-                // Si existe, habilitamos el textBox3
-                // tomamos desde el textBox2 el documento y lo pasamos al servicio cliente
-                ServicioCliente servicioCliente = new ServicioCliente();
-                Socio? usuario = servicioCliente.ObtenerUsuarioPorDocumento(textBox2.Text);
-                if (usuario != null)
-                {
-                    // Si el usuario existe, habilitamos el textBox3 quiero que quede cargado pero no se pueda modificar
-                    // y mostramos su nombre en el textBox3
-
-                    textBox3.Text = usuario.Nombre; // Asignamos el nombre del usuario al textBox3
-                }
-                else
-                {
-                    // Si no existe, mostramos un mensaje de error
-                    MessageBox.Show("El documento ingresado no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBox3.Enabled = false; // Deshabilitamos el textBox3 si no se encuentra el usuario
-                }
-            }
-
+            //cerramos el formulario
+            this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnPagar_Click(object sender, EventArgs e)
         {
             //Verificamos que el nombre, el documento no esten vacios, el pago y el tipo de pago
-            if (string.IsNullOrWhiteSpace(textBox3.Text) || string.IsNullOrWhiteSpace(textBox2.Text) ||
-                string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(comboBox1.Text))
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtDocumento.Text) ||
+                string.IsNullOrWhiteSpace(txtMonto.Text) || string.IsNullOrWhiteSpace(cboTipo.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -95,10 +64,10 @@ namespace MenuPrincipalClub.Forms
                 // Creamos una instancia de Pago con los datos ingresados
                 Pago nuevoPago = new Pago
                 {
-                    Documento = textBox2.Text,
+                    Documento = txtDocumento.Text,
                     Fecha = DateTime.Now, // Asignamos la fecha actual
-                    Monto = decimal.Parse(textBox1.Text), // Convertimos el monto a decimal
-                    MetodoPago = comboBox1.SelectedItem.ToString() // Obtenemos el método de pago seleccionado
+                    Monto = decimal.Parse(txtMonto.Text), // Convertimos el monto a decimal
+                    MetodoPago = cboTipo.SelectedItem.ToString() // Obtenemos el método de pago seleccionado
                 };
                 // Llamamos al servicio para registrar el pago
                 ServicioCliente servicioCliente = new ServicioCliente();
@@ -107,16 +76,45 @@ namespace MenuPrincipalClub.Forms
                 MessageBox.Show("Pago registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Limpiamos los campos después de registrar el pago
-                textBox2.Clear();
-                textBox3.Clear();
-                textBox1.Clear();
-                comboBox1.SelectedIndex = -1; // Reseteamos el comboBox
+                txtDocumento.Clear();
+                txtNombre.Clear();
+                txtMonto.Clear();
+                cboTipo.SelectedIndex = -1; // Reseteamos el comboBox
 
 
                 //cerramos el formulario
                 this.Close();
             }
+        }
 
+        private void btnVerificar_Click(object sender, EventArgs e)
+        {
+            // verificamos que el documento existe textBox2 en la db
+            if (txtDocumento.Text == "")
+            {
+                MessageBox.Show("Por favor, ingrese un documento.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                // Aquí deberías implementar la lógica para verificar si el documento existe en la base de datos
+                // Si existe, habilitamos el textBox3
+                // tomamos desde el textBox2 el documento y lo pasamos al servicio cliente
+                ServicioCliente servicioCliente = new ServicioCliente();
+                Socio? usuario = servicioCliente.ObtenerUsuarioPorDocumento(txtDocumento.Text);
+                if (usuario != null)
+                {
+                    // Si el usuario existe, habilitamos el textBox3 quiero que quede cargado pero no se pueda modificar
+                    // y mostramos su nombre en el textBox3
+
+                    txtNombre.Text = usuario.Nombre; // Asignamos el nombre del usuario al textBox3
+                }
+                else
+                {
+                    // Si no existe, mostramos un mensaje de error
+                    MessageBox.Show("El documento ingresado no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtNombre.Enabled = false; // Deshabilitamos el textBox3 si no se encuentra el usuario
+                }
+            }
         }
     }
 }

@@ -28,134 +28,133 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            textBox1 = new TextBox();
-            label1 = new Label();
-            comboBox1 = new ComboBox();
-            button2 = new Button();
-            label2 = new Label();
-            label3 = new Label();
-            textBox2 = new TextBox();
-            label4 = new Label();
-            textBox3 = new TextBox();
-            button3 = new Button();
+            btnPagar = new Button();
+            txtMonto = new TextBox();
+            lblMonto = new Label();
+            cboTipo = new ComboBox();
+            btnCancelar = new Button();
+            lblTipo = new Label();
+            lblDocumento = new Label();
+            txtDocumento = new TextBox();
+            lblNombre = new Label();
+            txtNombre = new TextBox();
+            btnVerificar = new Button();
             SuspendLayout();
             // 
-            // button1
+            // btnPagar
             // 
-            button1.Location = new Point(399, 351);
-            button1.Name = "button1";
-            button1.Size = new Size(100, 48);
-            button1.TabIndex = 0;
-            button1.Text = "Pagar";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnPagar.Location = new Point(399, 351);
+            btnPagar.Name = "btnPagar";
+            btnPagar.Size = new Size(100, 48);
+            btnPagar.TabIndex = 0;
+            btnPagar.Text = "Pagar";
+            btnPagar.UseVisualStyleBackColor = true;
+            btnPagar.Click += btnPagar_Click;
             // 
-            // textBox1
+            // txtMonto
             // 
-            textBox1.Location = new Point(388, 220);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 1;
+            txtMonto.Location = new Point(388, 220);
+            txtMonto.Name = "txtMonto";
+            txtMonto.Size = new Size(100, 23);
+            txtMonto.TabIndex = 1;
             // 
-            // label1
+            // lblMonto
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(218, 220);
-            label1.Name = "label1";
-            label1.Size = new Size(43, 15);
-            label1.TabIndex = 2;
-            label1.Text = "Monto";
+            lblMonto.AutoSize = true;
+            lblMonto.Location = new Point(218, 220);
+            lblMonto.Name = "lblMonto";
+            lblMonto.Size = new Size(43, 15);
+            lblMonto.TabIndex = 2;
+            lblMonto.Text = "Monto";
             // 
-            // comboBox1
+            // cboTipo
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Efectivo", "Transferencia" });
-            comboBox1.Location = new Point(388, 284);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 3;
+            cboTipo.FormattingEnabled = true;
+            cboTipo.Items.AddRange(new object[] { "Efectivo", "Transferencia" });
+            cboTipo.Location = new Point(388, 284);
+            cboTipo.Name = "cboTipo";
+            cboTipo.Size = new Size(121, 23);
+            cboTipo.TabIndex = 3;
             // 
-            // button2
+            // btnCancelar
             // 
-            button2.Location = new Point(195, 351);
-            button2.Name = "button2";
-            button2.Size = new Size(93, 48);
-            button2.TabIndex = 4;
-            button2.Text = "Cancelar";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btnCancelar.Location = new Point(195, 351);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(93, 48);
+            btnCancelar.TabIndex = 4;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
-            // label2
+            // lblTipo
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(218, 284);
-            label2.Name = "label2";
-            label2.Size = new Size(30, 15);
-            label2.TabIndex = 5;
-            label2.Text = "Tipo";
+            lblTipo.AutoSize = true;
+            lblTipo.Location = new Point(218, 284);
+            lblTipo.Name = "lblTipo";
+            lblTipo.Size = new Size(31, 15);
+            lblTipo.TabIndex = 5;
+            lblTipo.Text = "Tipo";
             // 
-            // label3
+            // lblDocumento
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(218, 68);
-            label3.Name = "label3";
-            label3.Size = new Size(70, 15);
-            label3.TabIndex = 6;
-            label3.Text = "Documento";
+            lblDocumento.AutoSize = true;
+            lblDocumento.Location = new Point(218, 68);
+            lblDocumento.Name = "lblDocumento";
+            lblDocumento.Size = new Size(70, 15);
+            lblDocumento.TabIndex = 6;
+            lblDocumento.Text = "Documento";
             // 
-            // textBox2
+            // txtDocumento
             // 
-            textBox2.Location = new Point(388, 65);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 7;
+            txtDocumento.Location = new Point(388, 65);
+            txtDocumento.Name = "txtDocumento";
+            txtDocumento.Size = new Size(100, 23);
+            txtDocumento.TabIndex = 7;
             // 
-            // label4
+            // lblNombre
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(218, 144);
-            label4.Name = "label4";
-            label4.Size = new Size(51, 15);
-            label4.TabIndex = 8;
-            label4.Text = "Nombre";
-            label4.Click += label4_Click;
+            lblNombre.AutoSize = true;
+            lblNombre.Location = new Point(218, 144);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(51, 15);
+            lblNombre.TabIndex = 8;
+            lblNombre.Text = "Nombre";
             // 
-            // textBox3
+            // txtNombre
             // 
-            textBox3.Location = new Point(388, 141);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 9;
+            txtNombre.Location = new Point(388, 141);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(100, 23);
+            txtNombre.TabIndex = 9;
             // 
-            // button3
+            // btnVerificar
             // 
-            button3.Location = new Point(573, 65);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 10;
-            button3.Text = "Verificar";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            btnVerificar.Location = new Point(573, 65);
+            btnVerificar.Name = "btnVerificar";
+            btnVerificar.Size = new Size(75, 23);
+            btnVerificar.TabIndex = 10;
+            btnVerificar.Text = "Verificar";
+            btnVerificar.UseVisualStyleBackColor = true;
+            btnVerificar.Click += btnVerificar_Click;
             // 
             // frmRegistrarPago
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button3);
-            Controls.Add(textBox3);
-            Controls.Add(label4);
-            Controls.Add(textBox2);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(button2);
-            Controls.Add(comboBox1);
-            Controls.Add(label1);
-            Controls.Add(textBox1);
-            Controls.Add(button1);
+            Controls.Add(btnVerificar);
+            Controls.Add(txtNombre);
+            Controls.Add(lblNombre);
+            Controls.Add(txtDocumento);
+            Controls.Add(lblDocumento);
+            Controls.Add(lblTipo);
+            Controls.Add(btnCancelar);
+            Controls.Add(cboTipo);
+            Controls.Add(lblMonto);
+            Controls.Add(txtMonto);
+            Controls.Add(btnPagar);
             Name = "frmRegistrarPago";
-            Text = "frmRegistrarPago";
+            Text = "Registrar Pago";
             Load += frmRegistrarPago_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -163,16 +162,16 @@
 
         #endregion
 
-        private Button button1;
-        private TextBox textBox1;
-        private Label label1;
-        private ComboBox comboBox1;
-        private Button button2;
-        private Label label2;
-        private Label label3;
-        private TextBox textBox2;
-        private Label label4;
-        private TextBox textBox3;
-        private Button button3;
+        private Button btnPagar;
+        private TextBox txtMonto;
+        private Label lblMonto;
+        private ComboBox cboTipo;
+        private Button btnCancelar;
+        private Label lblTipo;
+        private Label lblDocumento;
+        private TextBox txtDocumento;
+        private Label lblNombre;
+        private TextBox txtNombre;
+        private Button btnVerificar;
     }
 }
