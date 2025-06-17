@@ -9,7 +9,9 @@ namespace MenuPrincipalClub
             InitializeComponent();
             txtPass.UseSystemPasswordChar = true;
 
-
+            //inicializar el formulario con valores default
+            txtUsuario.Text = "admin";
+            txtPass.Text = "admin123";
 
         }
 

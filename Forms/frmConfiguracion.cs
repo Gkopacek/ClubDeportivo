@@ -16,6 +16,12 @@ namespace MenuPrincipalClub.Forms
         public frmConfiguracion()
         {
             InitializeComponent();
+            // configuramos las variables en valores por default
+            txtServidor.Text = "127.0.0.1";
+            txtPuerto.Text = "3306";
+            txtUsuario.Text = "root";
+            txtContrasena.Text = "";
+            txtBaseDatos.Text = "Club_Deportivo_2";
         }
 
         private void button1_Click(object sender, EventArgs e)
