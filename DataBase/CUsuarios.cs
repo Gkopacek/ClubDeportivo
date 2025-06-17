@@ -33,7 +33,7 @@ namespace MenuPrincipalClub.Datos
                 return tabla;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
