@@ -45,7 +45,7 @@ namespace MenuPrincipalClub.Forms
             //si no existe, lo agregamos a la db
             var servicioCliente = new MenuPrincipalClub.Servicios.ServicioCliente();
             var documento = txtDocumento.Text.Trim();
-            var usuario = servicioCliente.ObtenerUsuarioPorDocumento(documento);
+            var usuario = servicioCliente.ObtenerPersonaPorDocumento(documento);
             if (usuario != null)
             {
                 MessageBox.Show("El usuario ya existe en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -60,7 +60,7 @@ namespace MenuPrincipalClub.Forms
                 {
                     // Aquí puedes agregar el código para registrar el nuevo socio
                     // Por ejemplo, llamar a un método en ServicioCliente para agregar el usuario
-                    var nuevoUsuario = new Socio
+                    var nuevoSocio = new Socio
                     {
                         Nombre = txtNombreYapellido.Text.Trim(),
                         Documento = documento,
@@ -69,7 +69,7 @@ namespace MenuPrincipalClub.Forms
                         Tipo = "socio", // Asignamos el tipo de socio
                         Apto_Fisico = chkAptoFisico.Checked // Asignamos si presentó apto físico
                     };
-                    servicioCliente.InsertarUsuario(nuevoUsuario);// Asegúrate de que este método exista en ServicioCliente
+                    servicioCliente.InsertarSocio(nuevoSocio);// Asegúrate de que este método exista en ServicioCliente
                     //luego si entrego apto fisico le mostramos un cartel con un boton que diga imprimir carnet
                     if (chkAptoFisico.Checked)
                     {
@@ -87,7 +87,7 @@ namespace MenuPrincipalClub.Forms
                     if (resultado == DialogResult.Yes)
                     {
                         // Si el usuario acepta, abrimos el formulario de registro de pago
-                        frmRegistrarPago frmRegistrarPago = new frmRegistrarPago(nuevoUsuario.Nombre, nuevoUsuario.Documento);
+                        frmRegistrarPago frmRegistrarPago = new frmRegistrarPago(nuevoSocio.Nombre, nuevoSocio.Documento);
                         frmRegistrarPago.ShowDialog(); // Mostramos el formulario modal para registrar el pago
                         // Luego de registrar el pago, cerramos el formulario de registro de Socio
                         MessageBox.Show("Pago registrado exitosamente. Gracias por su colaboración.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);

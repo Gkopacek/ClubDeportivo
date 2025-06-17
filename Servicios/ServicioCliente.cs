@@ -57,7 +57,7 @@ public class ServicioCliente
 
 
         // Segundo servicio buscar un usuario por su documento
-        public Socio ObtenerUsuarioPorDocumento(string documento)
+        public Socio ObtenerPersonaPorDocumento(string documento)
         {
             Socio usuario = null;
             MySqlConnection sqlCon = Conexion.CrearConexion();
@@ -88,7 +88,7 @@ public class ServicioCliente
 
         // Tercer servicio insertar un usuario a la db
         // stored prodcedure InsertarSocio
-       public bool InsertarUsuario(Socio usuario)
+       public bool InsertarSocio(Socio usuario)
         {
             bool exito = false;
             MySqlConnection sqlCon = Conexion.CrearConexion();

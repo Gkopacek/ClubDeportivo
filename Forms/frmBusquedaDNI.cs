@@ -23,7 +23,7 @@ namespace MenuPrincipalClub.Forms
         {
             //verificamos que existe un usuario con el documento ingresado
             ServicioCliente servicioCliente = new ServicioCliente();
-            var usuario = servicioCliente.ObtenerUsuarioPorDocumento(textBox1.Text);
+            var usuario = servicioCliente.ObtenerPersonaPorDocumento(textBox1.Text);
             //si lo encontramos emitimos un mensaje y lo mostramos en el grid del frm principal
 
             if (usuario != null)

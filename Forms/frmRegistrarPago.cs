@@ -100,7 +100,7 @@ namespace MenuPrincipalClub.Forms
                 // Si existe, habilitamos el textBox3
                 // tomamos desde el textBox2 el documento y lo pasamos al servicio cliente
                 ServicioCliente servicioCliente = new ServicioCliente();
-                Socio? usuario = servicioCliente.ObtenerUsuarioPorDocumento(txtDocumento.Text);
+                Socio? usuario = servicioCliente.ObtenerPersonaPorDocumento(txtDocumento.Text);
                 if (usuario != null)
                 {
                     // Si el usuario existe, habilitamos el textBox3 quiero que quede cargado pero no se pueda modificar
