@@ -11,7 +11,7 @@ namespace MenuPrincipalClub
 
             //inicializar el formulario con valores default
             txtUsuario.Text = "admin";
-            txtPass.Text = "admin123";
+            txtContrasenia.Text = "admin123";
 
         }
 
