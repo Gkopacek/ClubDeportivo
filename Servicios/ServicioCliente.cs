@@ -57,9 +57,9 @@ public class ServicioCliente
 
 
         // Segundo servicio buscar un usuario por su documento
-        public Socio ObtenerPersonaPorDocumento(string documento)
+        public Persona ObtenerPersonaPorDocumento(string documento)
         {
-            Socio usuario = null;
+            Persona persona = null;
             MySqlConnection sqlCon = Conexion.CrearConexion();
             MySqlCommand comando = new MySqlCommand("BuscarPersonaPorDocumento", sqlCon);
             {
@@ -68,22 +68,62 @@ public class ServicioCliente
                 sqlCon.Open();
                 using (var lector = comando.ExecuteReader())
                 {
+
                     if (lector.Read())
                     {
-                        usuario = new Socio
+                        //verificamos el lector para ver tipo si es "socio" o "no socio"
+                        // y asignamos el tipo de usuario
+                        string tipo  = lector.GetString(5);
+                        if (tipo == "socio")
                         {
+                            //definimos nombre
+                            persona = new Socio
+                            {
+                                Nombre = lector.GetString(1),
+                                Documento = lector.GetString(2),
+                                Fecha_Inscripcion = lector.GetDateTime(3),
+                                Estado = Enum.TryParse(lector.GetString(4), ignoreCase: true, out Estado estado)
+                                    ? estado
+                                    : Estado.Inactivo,
+                                Tipo = lector.GetString(5),
+                            };
+
+                        }
+                        else if (tipo == "no socio")
+                        {
+                            persona = new NoSocio
+                            {
+                                Nombre = lector.GetString(1),
+                                Documento = lector.GetString(2),
+                                Fecha_Inscripcion = lector.GetDateTime(3),
+                                Estado = Enum.TryParse(lector.GetString(4), ignoreCase: true, out Estado estado)
+                                    ? estado
+                                    : Estado.Inactivo,
+                                Tipo = lector.GetString(5),
+                                
+                            };
+                        }
+                        else
+                        {
+                            throw new Exception("Tipo de usuario desconocido.");
+                        }
+
+
+
+                        //usuario = new Socio
+                        //{
                             
-                            Nombre = lector.GetString(1),
-                            Documento = lector.GetString(2),
-                            Fecha_Inscripcion = lector.GetDateTime(3),
-                            Estado = Enum.TryParse(lector.GetString(4), ignoreCase: true, out Estado estado)
-                                ? estado
-                                : Estado.Inactivo
-                        };
+                        //    Nombre = lector.GetString(1),
+                        //    Documento = lector.GetString(2),
+                        //    Fecha_Inscripcion = lector.GetDateTime(3),
+                        //    Estado = Enum.TryParse(lector.GetString(4), ignoreCase: true, out Estado estado)
+                        //        ? estado
+                        //        : Estado.Inactivo
+                        //};
                     }
                 }
             }
-            return usuario;
+            return persona;
         }
 
         // Tercer servicio insertar un usuario a la db
@@ -181,7 +221,7 @@ public class ServicioCliente
                 comando.Parameters.AddWithValue("@p_documento", pago.Documento);
                 //comando.Parameters.AddWithValue("@fecha", pago.Fecha);
                 comando.Parameters.AddWithValue("@p_monto", pago.Monto);
-                comando.Parameters.AddWithValue("@p_metodo_pago", pago.MetodoPago);
+                comando.Parameters.AddWithValue("@p_concepto", pago.Concepto);
                 sqlCon.Open();
                 int filasAfectadas = comando.ExecuteNonQuery();
                 exito = filasAfectadas > 0;

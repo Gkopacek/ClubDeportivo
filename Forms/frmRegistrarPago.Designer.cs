@@ -70,7 +70,7 @@
             // cboTipo
             // 
             cboTipo.FormattingEnabled = true;
-            cboTipo.Items.AddRange(new object[] { "Efectivo", "Transferencia" });
+            cboTipo.Items.AddRange(new object[] { "actividad", "mensualidad" });
             cboTipo.Location = new Point(388, 284);
             cboTipo.Name = "cboTipo";
             cboTipo.Size = new Size(121, 23);
@@ -91,9 +91,9 @@
             lblTipo.AutoSize = true;
             lblTipo.Location = new Point(218, 284);
             lblTipo.Name = "lblTipo";
-            lblTipo.Size = new Size(31, 15);
+            lblTipo.Size = new Size(59, 15);
             lblTipo.TabIndex = 5;
-            lblTipo.Text = "Tipo";
+            lblTipo.Text = "Concepto";
             // 
             // lblDocumento
             // 

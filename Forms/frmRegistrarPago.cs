@@ -23,12 +23,46 @@ namespace MenuPrincipalClub.Forms
         }
 
 
-        public frmRegistrarPago(string nombre, string documento)
+        //CONSTRUCTOR FUERA DE SERVICIO
+        //public frmRegistrarPago(string nombre, string documento)
+        //{
+        //    InitializeComponent();
+        //    //ponemos el nombre y el documento en los textBox
+        //    txtNombre.Text = nombre;
+        //    txtDocumento.Text = documento;
+        //    //ponemos disables el textBox3
+        //    txtNombre.Enabled = false;
+        //    txtDocumento.Enabled = false; // Deshabilitamos el textBox2 para que no se pueda modificar el documento una vez ingresado
+        //}
+
+        //hacemos constructor para registrar pago socio
+        public frmRegistrarPago(Socio socio)
         {
             InitializeComponent();
             //ponemos el nombre y el documento en los textBox
-            txtNombre.Text = nombre;
-            txtDocumento.Text = documento;
+            txtNombre.Text = socio.Nombre;
+            txtDocumento.Text = socio.Documento;
+            //ponemos el concepto como "mensualidad" por defecto y lo deshabilitamos
+            cboTipo.SelectedItem = "mensualidad"; // Asignamos el concepto de pago como "mensualidad"
+            cboTipo.Enabled = false; // Deshabilitamos el comboBox para que no se pueda modificar el concepto una vez ingresado
+
+
+
+            //ponemos disables el textBox3
+            txtNombre.Enabled = false;
+            txtDocumento.Enabled = false; // Deshabilitamos el textBox2 para que no se pueda modificar el documento una vez ingresado
+        }
+
+        //hacemos constructor para registar pago no socio
+        public frmRegistrarPago(NoSocio noSocio)
+        {
+            InitializeComponent();
+            //ponemos el nombre y el documento en los textBox
+            txtNombre.Text = noSocio.Nombre;
+            txtDocumento.Text = noSocio.Documento;
+            //ponemos el concepto como "actividad" por defecto y lo deshabilitamos
+            cboTipo.SelectedItem = "actividad"; // Asignamos el concepto de pago como "actividad"
+            cboTipo.Enabled = false; // Deshabilitamos el comboBox para que no se pueda modificar el concepto una vez ingresado
             //ponemos disables el textBox3
             txtNombre.Enabled = false;
             txtDocumento.Enabled = false; // Deshabilitamos el textBox2 para que no se pueda modificar el documento una vez ingresado
@@ -67,7 +101,7 @@ namespace MenuPrincipalClub.Forms
                     Documento = txtDocumento.Text,
                     Fecha = DateTime.Now, // Asignamos la fecha actual
                     Monto = decimal.Parse(txtMonto.Text), // Convertimos el monto a decimal
-                    MetodoPago = cboTipo.SelectedItem.ToString() // Obtenemos el método de pago seleccionado
+                    Concepto = cboTipo.SelectedItem.ToString() // Obtenemos el método de pago seleccionado
                 };
                 // Llamamos al servicio para registrar el pago
                 ServicioCliente servicioCliente = new ServicioCliente();
@@ -100,13 +134,25 @@ namespace MenuPrincipalClub.Forms
                 // Si existe, habilitamos el textBox3
                 // tomamos desde el textBox2 el documento y lo pasamos al servicio cliente
                 ServicioCliente servicioCliente = new ServicioCliente();
-                Socio? usuario = servicioCliente.ObtenerPersonaPorDocumento(txtDocumento.Text);
-                if (usuario != null)
+                Persona? persona = servicioCliente.ObtenerPersonaPorDocumento(txtDocumento.Text);
+                if (persona != null)
                 {
                     // Si el usuario existe, habilitamos el textBox3 quiero que quede cargado pero no se pueda modificar
                     // y mostramos su nombre en el textBox3
 
-                    txtNombre.Text = usuario.Nombre; // Asignamos el nombre del usuario al textBox3
+                    txtNombre.Text = persona.Nombre; // Asignamos el nombre del usuario al textBox3
+
+                    //si el usuario es un socio, mostramos el concepto de pago como "mensualidad" y lo deshabilitamos
+                    if (persona is Socio)
+                    {
+                        cboTipo.SelectedItem = "mensualidad"; // Asignamos el concepto de pago como "mensualidad"
+                        cboTipo.Enabled = false; // Deshabilitamos el comboBox para que no se pueda modificar el concepto una vez ingresado
+                    }
+                    else if (persona is NoSocio)
+                    {
+                        cboTipo.SelectedItem = "actividad"; // Asignamos el concepto de pago como "actividad"
+                        cboTipo.Enabled = false; // Deshabilitamos el comboBox para que no se pueda modificar el concepto una vez ingresado
+                    }
                 }
                 else
                 {

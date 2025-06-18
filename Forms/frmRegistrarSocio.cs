@@ -87,7 +87,7 @@ namespace MenuPrincipalClub.Forms
                     if (resultado == DialogResult.Yes)
                     {
                         // Si el usuario acepta, abrimos el formulario de registro de pago
-                        frmRegistrarPago frmRegistrarPago = new frmRegistrarPago(nuevoSocio.Nombre, nuevoSocio.Documento);
+                        frmRegistrarPago frmRegistrarPago = new frmRegistrarPago(nuevoSocio);
                         frmRegistrarPago.ShowDialog(); // Mostramos el formulario modal para registrar el pago
                         // Luego de registrar el pago, cerramos el formulario de registro de Socio
                         MessageBox.Show("Pago registrado exitosamente. Gracias por su colaboración.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -120,7 +120,7 @@ namespace MenuPrincipalClub.Forms
                     // el socio tiene que realizar el pago en el momento por lo que abre el modal de Registrar pago con el documento del no socio
                     MessageBox.Show("No Socio registrado exitosamente. Por favor, realice el pago correspondiente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     // Aquí podrías abrir un formulario modal para registrar el pago del No Socio
-                    frmRegistrarPago frmRegistrarPago = new frmRegistrarPago(nuevoNoSocio.Nombre, nuevoNoSocio.Documento);
+                    frmRegistrarPago frmRegistrarPago = new frmRegistrarPago(nuevoNoSocio);
                     frmRegistrarPago.ShowDialog(); // Mostramos el formulario modal para registrar el pago
                     // Luego de registrar el pago, cerramos el formulario de registro de No Socio
                     //frmRegistrarPago.ActiveForm.Close(); // Esto no es necesario ya que el formulario se cierra al finalizar el diálogo
