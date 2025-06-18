@@ -82,6 +82,9 @@ namespace MenuPrincipalClub.Forms
         {
             //cerramos el formulario
             this.Close();
+            // tiramos // un mensaje de que se ha cancelado el registro de pago
+            this.DialogResult = DialogResult.Cancel; // Establecemos el resultado del diálogo como Cancel
+            MessageBox.Show("Registro de pago cancelado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnPagar_Click(object sender, EventArgs e)
@@ -107,7 +110,16 @@ namespace MenuPrincipalClub.Forms
                 ServicioCliente servicioCliente = new ServicioCliente();
                 bool exito = servicioCliente.RegistrarPago(nuevoPago);
 
-                MessageBox.Show("Pago registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //aclaramos que el pago se realizo con exito en messagebox
+                if (exito)
+                {
+                    MessageBox.Show("Pago registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error al registrar el pago. Por favor, intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return; // Salimos del método si hubo un error al registrar el pago
+                }
 
                 // Limpiamos los campos después de registrar el pago
                 txtDocumento.Clear();
@@ -117,6 +129,7 @@ namespace MenuPrincipalClub.Forms
 
 
                 //cerramos el formulario
+                this.DialogResult = DialogResult.OK; // Establecemos el resultado del diálogo como OK
                 this.Close();
             }
         }

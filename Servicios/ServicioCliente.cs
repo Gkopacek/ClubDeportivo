@@ -226,6 +226,21 @@ public class ServicioCliente
                 int filasAfectadas = comando.ExecuteNonQuery();
                 exito = filasAfectadas > 0;
             }
+
+
+            //ejecutamos actualizar Deudores para que cada vez que tengamos un pago se actualice la tabla
+            //if (exito)
+            //{
+            //    ActualizarDeudores();
+            //    MessageBox.Show("Pago registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Error al registrar el pago.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //
+
+
             return exito;
         }
 

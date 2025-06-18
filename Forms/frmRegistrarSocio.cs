@@ -89,8 +89,24 @@ namespace MenuPrincipalClub.Forms
                         // Si el usuario acepta, abrimos el formulario de registro de pago
                         frmRegistrarPago frmRegistrarPago = new frmRegistrarPago(nuevoSocio);
                         frmRegistrarPago.ShowDialog(); // Mostramos el formulario modal para registrar el pago
-                        // Luego de registrar el pago, cerramos el formulario de registro de Socio
-                        MessageBox.Show("Pago registrado exitosamente. Gracias por su colaboración.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //verificamos si el pago fue exitoso o cancelado
+
+
+                        if (frmRegistrarPago.DialogResult == DialogResult.OK)
+                        {
+                            // Aquí podrías manejar el caso en que el pago se registró exitosamente
+                            // Por ejemplo, podrías mostrar un mensaje de éxito o realizar alguna acción adicional
+                            MessageBox.Show("Pago registrado exitosamente. Gracias por su colaboración.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                        else
+                        {
+                            // Si el usuario canceló el pago, podrías mostrar un mensaje o realizar alguna acción alternativa
+                            MessageBox.Show("Pago cancelado. Puede realizarlo en cualquier momento.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+
+                       
                     }
                     else
                     {
@@ -124,7 +140,22 @@ namespace MenuPrincipalClub.Forms
                     frmRegistrarPago.ShowDialog(); // Mostramos el formulario modal para registrar el pago
                     // Luego de registrar el pago, cerramos el formulario de registro de No Socio
                     //frmRegistrarPago.ActiveForm.Close(); // Esto no es necesario ya que el formulario se cierra al finalizar el diálogo
-                    MessageBox.Show("Pago registrado exitosamente. Gracias por su colaboración.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //verificamos que el pago se concreto o cancelo
+                    if (frmRegistrarPago.DialogResult == DialogResult.OK)
+                    {
+                        // Aquí podrías manejar el caso en que el pago se registró exitosamente
+                        // Por ejemplo, podrías mostrar un mensaje de éxito o realizar alguna acción adicional
+                        //MessageBox.Show("Pago registrado exitosamente. Gracias por su colaboración.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        // Si el usuario canceló el pago, podrías mostrar un mensaje o realizar alguna acción alternativa
+                        MessageBox.Show("Pago cancelado. Puede realizarlo en cualquier momento.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+
+                    
 
 
                     frmRegistrarSocio.ActiveForm.Close(); // Cerramos el formulario después de registrar al No Socio
