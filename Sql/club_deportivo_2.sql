@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2025 a las 03:34:23
+-- Tiempo de generación: 19-06-2025 a las 02:06:37
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -60,9 +60,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerPersonas` ()   BEGIN
     SELECT * FROM personas;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `RegistrarPago` (IN `p_documento` VARCHAR(20), IN `p_monto` DECIMAL(10,2), IN `p_metodo_pago` VARCHAR(50))   BEGIN
-    INSERT INTO pagos (documento, monto, metodo_pago)
-    VALUES (p_documento, p_monto, p_metodo_pago);
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RegistrarPago` (IN `p_documento` VARCHAR(20), IN `p_monto` DECIMAL(10,2), IN `p_concepto` VARCHAR(50))   BEGIN
+    INSERT INTO pagos (documento, monto, concepto)
+    VALUES (p_documento, p_monto, p_concepto);
     
     -- Actualizar el estado del socio a 'activo'
     UPDATE personas
@@ -83,24 +83,16 @@ CREATE TABLE `pagos` (
   `documento` varchar(20) NOT NULL,
   `fecha_pago` date NOT NULL DEFAULT curdate(),
   `monto` decimal(10,2) NOT NULL,
-  `metodo_pago` varchar(50) DEFAULT NULL
+  `concepto` varchar(55) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `pagos`
 --
 
-INSERT INTO `pagos` (`id`, `documento`, `fecha_pago`, `monto`, `metodo_pago`) VALUES
-(1, '12345678', '2025-05-27', '15000.00', 'Efectivo'),
-(2, '23456789', '2025-05-27', '15000.00', 'Transferencia'),
-(3, '23456789', '2025-05-27', '1.00', 'Efectivo'),
-(4, '87654321', '2025-05-28', '15000.00', 'Efectivo'),
-(5, '123456789', '2025-05-28', '15000.00', 'Transferencia'),
-(6, '23456789', '2025-05-29', '20000.00', 'Efectivo'),
-(8, '34567890', '2025-06-06', '15000.00', 'Efectivo'),
-(9, '78979845123312', '2025-06-06', '15000.00', 'Efectivo'),
-(10, '7896312456789', '2025-06-06', '13333.00', 'Efectivo'),
-(11, '789879645', '2025-06-06', '45000.00', 'Efectivo');
+INSERT INTO `pagos` (`id`, `documento`, `fecha_pago`, `monto`, `concepto`) VALUES
+(36, '364008555', '2025-06-18', '30000.00', 'mensualidad'),
+(37, '364008557', '2025-06-18', '15000.00', 'actividad');
 
 -- --------------------------------------------------------
 
@@ -123,50 +115,9 @@ CREATE TABLE `personas` (
 --
 
 INSERT INTO `personas` (`id`, `nombre`, `documento`, `fecha_inscripcion`, `estado`, `tipo`, `presento_apto_fisico`) VALUES
-(1, 'Juan Pérez', '12345678', '2023-01-15', 'activo', 'no socio', 0),
-(2, 'María González', '87654321', '2024-03-10', 'activo', 'socio', 0),
-(3, 'Carlos López', '23456789', '2022-07-25', 'activo', 'socio', 0),
-(4, 'Ana Rodríguez', '34567890', '2025-01-01', 'activo', 'socio', 0),
-(5, 'Pedro Ramírez', '56789012', '2023-09-30', 'inactivo', 'socio', 0),
-(13, 'franquito', '333333333', '2025-05-28', 'inactivo', 'socio', 0),
-(14, '33366', 'franquito', '2025-05-28', 'inactivo', 'socio', 0),
-(15, 'Franquito lala', '123456789', '2025-05-28', 'activo', 'socio', 0),
-(16, 'franquete', '3640085555', '2025-05-29', 'inactivo', 'socio', 0),
-(17, 'fraaaaaaaaaaa', '123123123', '2025-05-29', 'inactivo', 'socio', 0),
-(18, 'Juan Test', '11223344', '2025-05-29', 'inactivo', 'socio', 0),
-(20, 'Juan agustin', '111111111', '2025-05-29', 'inactivo', 'socio', 0),
-(21, 'Juan roman', '11111', '2025-05-29', 'inactivo', 'socio', 0),
-(22, '1233f', '12334', '2025-05-29', 'inactivo', 'socio', 0),
-(23, 'asdajad', '12345', '2025-05-29', 'inactivo', 'socio', 0),
-(24, 'juancho', '123451', '2025-05-29', 'inactivo', 'socio', 0),
-(25, 'Roman', '123456', '2025-05-29', 'inactivo', 'no socio', 0),
-(26, 'roman', '123456781', '2025-05-29', 'inactivo', 'no socio', 0),
-(27, 'roman', '1234567811', '2025-05-29', 'inactivo', 'no socio', 0),
-(28, 'fraaaaaaa', '33333333333333', '2025-06-05', 'inactivo', 'socio', 0),
-(29, 'ffffffffffffffffffffffff', '33333333333333333333', '2025-06-05', 'inactivo', 'socio', 0),
-(30, 'aaaaaaaaaa', '1111111111111111', '2025-06-05', 'inactivo', 'socio', 0),
-(31, 'qqqqqqqqqqqqqqqq', '22222222222222222222', '2025-06-05', 'inactivo', 'socio', 1),
-(32, 'aaaaaaaaaaaaaaa', '55555555555', '2025-06-05', 'inactivo', 'socio', 0),
-(33, 'adsaddsasad', '5665445665', '2025-06-06', 'inactivo', 'socio', 0),
-(34, 'asdsddsasad', '44667989879', '2025-06-06', 'inactivo', 'socio', 1),
-(35, 'adsdadasdasd', '798798987987789', '2025-06-06', 'inactivo', '', 0),
-(36, 'asdasdasd', '789987987879879987', '2025-06-06', 'inactivo', '', 0),
-(37, 'dasdasda', '364445464478789', '2025-06-06', 'inactivo', '', 0),
-(38, 'asdasdasd', '4561313245', '2025-06-06', 'inactivo', '', 0),
-(39, 'asdasdssdadsa', '879879879987', '2025-06-06', 'inactivo', 'socio', 0),
-(40, 'adssadsdasadsad', '78989789787987978979', '2025-06-06', 'inactivo', '', 0),
-(41, 'dasdasdasd', '78978978978979898787', '2025-06-06', 'inactivo', '', 0),
-(42, 'asdsadsa', '31232123321231', '2025-06-06', 'inactivo', 'socio', 0),
-(43, 'wqeasasdzxc', '454357577', '2025-06-06', 'inactivo', 'no socio', 0),
-(44, 'asdaszzxc', '1323466541132', '2025-06-06', 'inactivo', '', 0),
-(45, 'asdsaddsadsa', '1322123123123', '2025-06-06', 'inactivo', 'socio', 0),
-(46, 'dasdsads', '213123132312', '2025-06-06', 'inactivo', 'socio', 0),
-(47, 'adsdassda', '7889787998644', '2025-06-06', 'inactivo', 'no socio', 0),
-(48, 'qewwqer', '331231213123123', '2025-06-06', 'inactivo', 'socio', 1),
-(49, 'dasdasd', '78979845123312', '2025-06-06', 'activo', 'no socio', 0),
-(50, 'daadswqe', '7896312456789', '2025-06-06', 'activo', 'no socio', 0),
-(51, 'saddsasda', '1123132136', '2025-06-06', 'activo', 'socio', 1),
-(52, 'sadasd', '789879645', '2025-06-06', 'activo', 'no socio', 0);
+(80, 'franco perrone', '364008555', '2025-06-18', 'activo', 'socio', 1),
+(81, 'franco rey', '364008556', '2025-06-18', 'inactivo', 'socio', 0),
+(82, 'fran rey', '364008557', '2025-06-18', 'activo', 'no socio', 0);
 
 -- --------------------------------------------------------
 
@@ -222,13 +173,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `pagos`
 --
 ALTER TABLE `pagos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `personas`
 --
 ALTER TABLE `personas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
