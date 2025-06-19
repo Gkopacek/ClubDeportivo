@@ -62,7 +62,7 @@ namespace MenuPrincipalClub.Forms
                     // Por ejemplo, llamar a un método en ServicioCliente para agregar el usuario
                     var nuevoSocio = new Socio
                     {
-                        Nombre = txtNombreYapellido.Text.Trim(),
+                        Nombre = txtNombreYapellido.Text.Trim().ToLower(),
                         Documento = documento,
                         Estado = Estado.Inactivo,
                         Fecha_Inscripcion = DateTime.Now,
@@ -74,6 +74,11 @@ namespace MenuPrincipalClub.Forms
                     if (chkAptoFisico.Checked)
                     {
                         MessageBox.Show("Socio registrado exitosamente. Por favor, imprima su carnet.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //abre un modal con los datos del socio y un boton que diga imprimir carnet, pero no implementamos la funcionalidad de imprimir carnet
+                        frmCarnet frmcarnet = new frmCarnet(nuevoSocio);
+                        frmcarnet.ShowDialog(); // Mostramos el formulario modal para mostrar el carnet del socio
+                        
+
                     }
                     else
                     {
@@ -122,7 +127,7 @@ namespace MenuPrincipalClub.Forms
                     // Hacemos registro de no socio
                     var nuevoNoSocio = new NoSocio
                     {
-                        Nombre = txtNombreYapellido.Text.Trim(),
+                        Nombre = txtNombreYapellido.Text.Trim().ToLower(),
                         Documento = documento,
                         Estado = Estado.Activo,
                         Fecha_Inscripcion = DateTime.Now,

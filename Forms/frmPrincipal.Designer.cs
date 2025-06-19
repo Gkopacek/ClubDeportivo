@@ -45,7 +45,7 @@
             btnMostrarAfiliados.Name = "btnMostrarAfiliados";
             btnMostrarAfiliados.Size = new Size(173, 59);
             btnMostrarAfiliados.TabIndex = 0;
-            btnMostrarAfiliados.Text = "Mostrar Afiliados";
+            btnMostrarAfiliados.Text = "Mostrar Socios";
             btnMostrarAfiliados.UseVisualStyleBackColor = true;
             btnMostrarAfiliados.Click += btnMostrarAfiliados_Click;
             // 
@@ -82,7 +82,7 @@
             btnListaDeudores.Name = "btnListaDeudores";
             btnListaDeudores.Size = new Size(171, 60);
             btnListaDeudores.TabIndex = 6;
-            btnListaDeudores.Text = "Lista Deudores";
+            btnListaDeudores.Text = "Lista Deudores Socios";
             btnListaDeudores.UseVisualStyleBackColor = true;
             btnListaDeudores.Click += btnListaDeudores_Click_1;
             // 
