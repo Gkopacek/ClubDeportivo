@@ -26,5 +26,10 @@ namespace MenuPrincipalClub.Forms
         {
 
         }
+
+        private void txtDocumento_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

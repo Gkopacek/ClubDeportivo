@@ -41,6 +41,7 @@
             txtDocumento.Size = new Size(38, 15);
             txtDocumento.TabIndex = 0;
             txtDocumento.Text = "label1";
+            txtDocumento.Click += txtDocumento_Click;
             // 
             // txtNombre
             // 

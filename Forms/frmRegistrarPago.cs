@@ -49,11 +49,11 @@ namespace MenuPrincipalClub.Forms
             txtDocumento.Text = socio.Documento;
             //ponemos el concepto como "mensualidad" por defecto y lo deshabilitamos
             cboTipo.SelectedItem = "mensualidad"; // Asignamos el concepto de pago como "mensualidad"
-            cboTipo.Enabled = false; // Deshabilitamos el comboBox para que no se pueda modificar el concepto una vez ingresado
 
 
 
             //ponemos disables el textBox3
+            cboTipo.Enabled = false; // Deshabilitamos el comboBox para que no se pueda modificar el concepto una vez ingresado
             txtNombre.Enabled = false;
             txtDocumento.Enabled = false; // Deshabilitamos el textBox2 para que no se pueda modificar el documento una vez ingresado
         }

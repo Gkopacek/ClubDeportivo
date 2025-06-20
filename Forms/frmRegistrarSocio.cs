@@ -45,7 +45,7 @@ namespace MenuPrincipalClub.Forms
             //si no existe, lo agregamos a la db
             var servicioCliente = new MenuPrincipalClub.Servicios.ServicioCliente();
             var documento = txtDocumento.Text.Trim();
-            var usuario = servicioCliente.ObtenerPersonaPorDocumento(documento);
+            var persona = servicioCliente.ObtenerPersonaPorDocumento(documento);
 
             // verificamos que documento y txtbox ombre no esten vacios
             if (string.IsNullOrWhiteSpace(txtNombreYapellido.Text) || string.IsNullOrWhiteSpace(documento))
@@ -56,7 +56,7 @@ namespace MenuPrincipalClub.Forms
 
 
 
-            if (usuario != null)
+            if (persona != null)
             {
                 MessageBox.Show("El usuario ya existe en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
