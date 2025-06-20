@@ -22,6 +22,11 @@ namespace MenuPrincipalClub.Forms
             txtNombre.Enabled = false;
         }
 
+        private void frmRegistrarPago_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
         //CONSTRUCTOR FUERA DE SERVICIO
         //public frmRegistrarPago(string nombre, string documento)
@@ -66,16 +71,6 @@ namespace MenuPrincipalClub.Forms
             //ponemos disables el textBox3
             txtNombre.Enabled = false;
             txtDocumento.Enabled = false; // Deshabilitamos el textBox2 para que no se pueda modificar el documento una vez ingresado
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmRegistrarPago_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

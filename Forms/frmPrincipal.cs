@@ -30,16 +30,6 @@ namespace MenuPrincipalClub
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            //frmBusquedaDNI frmBusquedaDNI = new frmBusquedaDNI();
-            //frmBusquedaDNI.Show();
-
-            //funcion en manetenimiento
-            MessageBox.Show("Función aún no disponible.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-
         private void btnMostrarAfiliados_Click(object sender, EventArgs e)
         {
             // Conexion conexion = Conexion.getInstancia();
