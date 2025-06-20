@@ -46,6 +46,16 @@ namespace MenuPrincipalClub.Forms
             var servicioCliente = new MenuPrincipalClub.Servicios.ServicioCliente();
             var documento = txtDocumento.Text.Trim();
             var usuario = servicioCliente.ObtenerPersonaPorDocumento(documento);
+
+            // verificamos que documento y txtbox ombre no esten vacios
+            if (string.IsNullOrWhiteSpace(txtNombreYapellido.Text) || string.IsNullOrWhiteSpace(documento))
+            {
+                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Salimos del método si hay campos vacíos
+            }
+
+
+
             if (usuario != null)
             {
                 MessageBox.Show("El usuario ya existe en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
